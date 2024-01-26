@@ -22,7 +22,7 @@
         </div>
         <div class="project">
             <a href="https://github.com/flooyd/solidtd">Tower Defense Map Editor - Solid</a>
-            <img src="https://private-user-images.githubusercontent.com/15240768/295236635-4c7bcd18-557f-4bb6-9877-58a97adc79d9.png?jwt=eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpc3MiOiJnaXRodWIuY29tIiwiYXVkIjoicmF3LmdpdGh1YnVzZXJjb250ZW50LmNvbSIsImtleSI6ImtleTUiLCJleHAiOjE3MDYyNDYyNzEsIm5iZiI6MTcwNjI0NTk3MSwicGF0aCI6Ii8xNTI0MDc2OC8yOTUyMzY2MzUtNGM3YmNkMTgtNTU3Zi00YmI2LTk4NzctNThhOTdhZGM3OWQ5LnBuZz9YLUFtei1BbGdvcml0aG09QVdTNC1ITUFDLVNIQTI1NiZYLUFtei1DcmVkZW50aWFsPUFLSUFWQ09EWUxTQTUzUFFLNFpBJTJGMjAyNDAxMjYlMkZ1cy1lYXN0LTElMkZzMyUyRmF3czRfcmVxdWVzdCZYLUFtei1EYXRlPTIwMjQwMTI2VDA1MTI1MVomWC1BbXotRXhwaXJlcz0zMDAmWC1BbXotU2lnbmF0dXJlPWVjZDYwZDMyN2EzZjhkMTlkODk1NTJmZDM5YmM3NGYyNDI5Y2FhOGM5NzkzMjAxNDAwZTdlYTgxOWU2NWZjMzImWC1BbXotU2lnbmVkSGVhZGVycz1ob3N0JmFjdG9yX2lkPTAma2V5X2lkPTAmcmVwb19pZD0wIn0.r1SijEb3NuO1VMzR5P7fADGHU3Dcc8YzQ9yAALB8Sx8" alt="screenshot of game">
+            <img src="https://github-production-user-asset-6210df.s3.amazonaws.com/15240768/295236635-4c7bcd18-557f-4bb6-9877-58a97adc79d9.png?X-Amz-Algorithm=AWS4-HMAC-SHA256&X-Amz-Credential=AKIAVCODYLSA53PQK4ZA%2F20240126%2Fus-east-1%2Fs3%2Faws4_request&X-Amz-Date=20240126T053454Z&X-Amz-Expires=300&X-Amz-Signature=bb6c5c809a59a39f3f87a835f0c94da927007f57de492828789e30d136ddf26c&X-Amz-SignedHeaders=host&actor_id=15240768&key_id=0&repo_id=740021734" alt="screenshot of game">
         </div>
         <div class="project">
             <a href="https://github.com/flooyd/dota2lfg">Dota 2 LFG - React</a>
