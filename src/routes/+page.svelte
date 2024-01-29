@@ -22,7 +22,7 @@
         </div>
         <div class="project">
             <a href="https://github.com/flooyd/solidtd">Tower Defense Map Editor - Solid</a>
-            <img src="https://i.imgur.com/VKl73zK.png" alt="screenshot of game">
+            <img src="https://i.imgur.com/xKox8dl.png" alt="screenshot of game">
         <div class="project">
             <a href="https://github.com/flooyd/dota2lfg">Dota 2 LFG - React</a>
             <img src="https://github.com/flooyd/dota2lfg/raw/master/readme%20images/dota2lfg.PNG" alt="screenshot of game">
