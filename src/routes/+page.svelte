@@ -25,7 +25,7 @@
 		using, in this order, Svelte, React, or Solid. Please check out my projects below and feel free
 		to contact me!
 	</div>
-	<div  transition:fade class="title" >Projects</div>
+	<div class="title" >Projects</div>
     <div class="projects">
         <div transition:fly={{duration: 1000, x: -1000}} class="project">
             <a href="https://github.com/flooyd/things">
