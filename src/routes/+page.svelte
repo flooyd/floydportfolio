@@ -67,7 +67,7 @@
         </div>
         <div  transition:fly={{duration: 1000, x: -1000}} class="project">
             <a target="__blank" href="https://github.com/flooyd/solidtd">
-		<div>Tower Defense Map Editor - As name implies - made with Solid</div>
+		<div>TD Map Editor - Made with Solid</div>
 		<img src="https://i.imgur.com/xKox8dl.png" alt="screenshot of game">
 		</a>
 	</div>
