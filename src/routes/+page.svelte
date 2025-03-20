@@ -60,7 +60,7 @@
 	    </a>
         </div>
 	<div  transition:fly={{duration: 1000, x: -1000}} class="project">
-            <a target="__blank" href="https://github.com/flooyd/Curiosity-and-Friend">
+            <a target="__blank" href="https://flooyd.github.io/Curiosity-and-Friends/">
 		<div>Curiosity and Friends - Browse Mars rover photos</div>
 		<img src="https://github.com/flooyd/Curiosity-and-Friends/raw/master/images/caf.PNG?raw=true" alt="screenshot of app">
 	    </a>
