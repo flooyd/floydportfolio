@@ -74,7 +74,7 @@
      <div  transition:fly={{duration: 1000, x: -1000}} class="project">
             <a target="__blank" href="https://raw.githubusercontent.com/flooyd/floydportfolio/refs/heads/main/static/cards.jpg">
 		<div>Drag and drop and flippable playing cards</div>
-		<img src https://raw.githubusercontent.com/flooyd/floydportfolio/refs/heads/main/static/cards.jpg" alt="screenshot of game">
+		<img src="https://raw.githubusercontent.com/flooyd/floydportfolio/refs/heads/main/static/cards.jpg" alt="screenshot of game">
 		</a>
 	</div>
     </div>
