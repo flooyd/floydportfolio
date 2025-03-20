@@ -27,28 +27,41 @@
 	</div>
 	<div class="title" >Projects</div>
     <div class="projects">
+	<div transition:fly={{duration: 1000, x: -1000}} class="project">
+            <a target="__blank" href="https://github.com/flooyd/portfolioo">
+				<div>Homepage - A flashier, alternative portfolio.</div>
+				<img src="https://raw.githubusercontent.com/flooyd/portfolioo/refs/heads/main/public/images/Portfolio.PNG" alt="screenshot of app">
+			</a>	
+        </div>
         <div transition:fly={{duration: 1000, x: -1000}} class="project">
-            <a href="https://github.com/flooyd/things">
-				<div>App Editor - SvelteKit and NestJS</div>
+            <a target="__blank" href="https://github.com/flooyd/things">
+				<div>App Editor - An app editor made with SvelteKit and NestJS</div>
 				<img src="https://github.com/flooyd/things/raw/main/public/images/grid.png?raw=true" alt="screenshot of app">
 			</a>	
         </div>
 	<div  transition:fly={{duration: 1000, x: -1000}} class="project">
-            <a href="https://github.com/flooyd/mango">
+            <a target="__blank" href="https://github.com/flooyd/weblearn">
+			<div>webLearn - A language learning site</div>
+			<img src="https://raw.githubusercontent.com/flooyd/weblearn/refs/heads/main/static/images/weblearn3.png" alt="screenshot of app">
+			</a>
+            
+        </div>
+	<div  transition:fly={{duration: 1000, x: -1000}} class="project">
+            <a target="__blank" href="https://github.com/flooyd/mango">
 			<div>Mango - Dota 2 Replay Navigator</div>
 			<img src="https://raw.githubusercontent.com/flooyd/mango/refs/heads/master/client/public/Mango.PNG" alt="screenshot of app">
 			</a>
             
         </div>
 	<div  transition:fly={{duration: 1000, x: -1000}} class="project">
-            <a href="https://github.com/flooyd/dota2lfg">
-		<div>Dota 2 LFG - React and Express</div>
+            <a target="__blank" href="https://github.com/flooyd/dota2lfg">
+		<div>Dota 2 LFG - A group finding app for Dota 2</div>
 		<img src="https://github.com/flooyd/dota2lfg/raw/master/readme%20images/dota2lfg.PNG" alt="screenshot of app">
 	    </a>
         </div>
         <div  transition:fly={{duration: 1000, x: -1000}} class="project">
-            <a href="https://github.com/flooyd/solidtd">
-		<div>Tower Defense Map Editor - Solid</div>
+            <a target="__blank" href="https://github.com/flooyd/solidtd">
+		<div>Tower Defense Map Editor - As name implies - made with Solid</div>
 		<img src="https://i.imgur.com/xKox8dl.png" alt="screenshot of game">
 		</a>
 	</div>
