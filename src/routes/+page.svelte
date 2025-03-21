@@ -21,15 +21,13 @@
 	<div transition:fade={{duration: 1000}} class="intro">
 		Hello! I am a web developer with 5 years of experience. I have worked on a
 		variety of projects ranging from small business websites to large scale web applications. My
-		hobby projects include some game development. I am looking for a job
-		using, in this order, Svelte, React, or Solid. Please check out my projects below and feel free
-		to contact me!
+		hobby projects include some game development.
 	</div>
 	<div class="title" >Projects</div>
     <div class="projects">
 	<div transition:fly={{duration: 1000, x: -1000}} class="project">
             <a target="__blank" href="https://github.com/flooyd/portfolioo">
-				<div>Homepage - A flashier, alternative portfolio.</div>
+				<div>Homepage - A flashier, alternative portfolio</div>
 				<img src="https://raw.githubusercontent.com/flooyd/portfolioo/refs/heads/main/public/images/Portfolio.PNG" alt="screenshot of app">
 			</a>	
         </div>
