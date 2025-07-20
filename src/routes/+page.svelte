@@ -43,15 +43,6 @@
 				</a>
 			</div>
 			<div transition:fly={{ duration: 1000, x: -1000 }} class="project">
-				<a target="__blank" href="https://github.com/flooyd/portfolioo">
-					<div>Homepage - A flashier, alternative portfolio</div>
-					<img
-						src="https://raw.githubusercontent.com/flooyd/portfolioo/refs/heads/main/public/images/Portfolio.PNG"
-						alt="screenshot of app"
-					/>
-				</a>
-			</div>
-			<div transition:fly={{ duration: 1000, x: -1000 }} class="project">
 				<a target="__blank" href="https://github.com/flooyd/things">
 					<div>App Editor - An app editor made with SvelteKit and NestJS</div>
 					<img
