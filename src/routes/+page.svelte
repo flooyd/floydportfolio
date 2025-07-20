@@ -158,7 +158,7 @@
 		flex-direction: column;
 		gap: 13.33px;
 		padding: 11.11 19.2px;
-		border-top: 3px solid lightgreen;
+		border-top: 11.11px solid lightgreen;
 	}
 
 	a {
