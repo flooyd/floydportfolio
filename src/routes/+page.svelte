@@ -25,8 +25,8 @@
 		<div class="projects">Projects</div>
 		<div class="projects">
 			<div transition:fly={{ duration: 1000, x: -1000 }} class="project">
-				<a target="__blank" href="__blank">
-					<div>The Forum - Let AI generate a comment based on yours.</div>
+				<a target="__blank" href="https://raw.githubusercontent.com/flooyd/floydportfolio/refs/heads/main/static/theforum.png">
+					<div>The Forum - Let AI generate a comment based on yours</div>
 					<img
 						src="./theforum.png"
 						alt="screenshot of app"
@@ -34,7 +34,7 @@
 				</a>
 			</div>
 			<div transition:fly={{ duration: 1000, x: -1000 }} class="project">
-				<a target="__blank" href="__blank">
+				<a target="__blank" href="https://raw.githubusercontent.com/flooyd/floydportfolio/refs/heads/main/static/financetrackerweb.png">
 					<div>Finance Tracker - a React Native app to track income and expenses</div>
 					<img
 						src="./financetrackerweb.png"
