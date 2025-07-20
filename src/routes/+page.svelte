@@ -37,7 +37,7 @@
 				<a target="__blank" href="__blank">
 					<div>Finance Tracker - a React Native app to track income and expenses</div>
 					<img
-						src="./financetracker.png"
+						src="./financetrackerweb.png"
 						alt="screenshot of app"
 					/>
 				</a>
