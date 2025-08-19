@@ -1,182 +1,552 @@
 <script>
 	import { onMount } from 'svelte';
-	import { fade, fly } from 'svelte/transition';
+	import { fade, fly, scale } from 'svelte/transition';
+	import { quintOut } from 'svelte/easing';
 	let ready = false;
+	let currentProject = 0;
 
 	onMount(() => {
 		ready = true;
 	});
+
+	const projects = [
+		{
+			title: "The Forum",
+			description: "AI-powered comment generation platform with intelligent conversation enhancement",
+			image: "./theforum.png",
+			link: "https://raw.githubusercontent.com/flooyd/floydportfolio/refs/heads/main/static/theforum.png",
+			tech: ["AI", "React", "Node.js"]
+		},
+		{
+			title: "Finance Tracker",
+			description: "Comprehensive React Native app for income and expense management",
+			image: "./financetrackerweb.png",
+			link: "https://raw.githubusercontent.com/flooyd/floydportfolio/refs/heads/main/static/financetrackerweb.png",
+			tech: ["React Native", "Mobile", "Finance"]
+		},
+		{
+			title: "App Editor",
+			description: "Full-stack application builder with SvelteKit frontend and NestJS backend",
+			image: "https://github.com/flooyd/things/raw/main/public/images/grid.png?raw=true",
+			link: "https://github.com/flooyd/things",
+			tech: ["SvelteKit", "NestJS", "TypeScript"]
+		},
+		{
+			title: "WebLearn",
+			description: "Interactive language learning platform with gamified experience",
+			image: "https://raw.githubusercontent.com/flooyd/weblearn/refs/heads/main/static/images/weblearn3.png",
+			link: "https://github.com/flooyd/weblearn",
+			tech: ["Education", "JavaScript", "Web"]
+		},
+		{
+			title: "Mango",
+			description: "Advanced Dota 2 replay analysis and navigation tool",
+			image: "https://raw.githubusercontent.com/flooyd/mango/refs/heads/master/client/public/Mango.PNG",
+			link: "https://github.com/flooyd/mango",
+			tech: ["Gaming", "Data Analysis", "React"]
+		},
+		{
+			title: "Dota 2 LFG",
+			description: "Team finding and matchmaking application for Dota 2 players",
+			image: "https://github.com/flooyd/dota2lfg/raw/master/readme%20images/dota2lfg.PNG",
+			link: "https://github.com/flooyd/dota2lfg",
+			tech: ["Gaming", "Community", "Node.js"]
+		},
+		{
+			title: "Curiosity and Friends",
+			description: "Mars rover photo browser with NASA API integration",
+			image: "https://github.com/flooyd/Curiosity-and-Friends/raw/master/images/caf.PNG?raw=true",
+			link: "https://flooyd.github.io/Curiosity-and-Friends/",
+			tech: ["NASA API", "Space", "Vue.js"]
+		},
+		{
+			title: "TD Map Editor",
+			description: "Tower Defense map creation tool built with Solid.js",
+			image: "https://i.imgur.com/xKox8dl.png",
+			link: "https://github.com/flooyd/solidtd",
+			tech: ["Solid.js", "Gaming", "Editor"]
+		},
+		{
+			title: "Interactive Cards",
+			description: "Drag-and-drop playing cards",
+			image: "https://raw.githubusercontent.com/flooyd/floydportfolio/refs/heads/main/static/cards.jpg",
+			link: "https://raw.githubusercontent.com/flooyd/floydportfolio/refs/heads/main/static/cards.jpg",
+			tech: ["Animation", "Physics", "JavaScript"]
+		}
+	];
 </script>
 
 {#if ready}
 	<main>
-		<div transition:fly={{ y: -100, duration: 1000 }} class="name">
-			Floyd Jones
-			<div>
-				<a href="https://linkedin.com/in/flooyd">Linkedin</a>
-				<a href="https://github.com/flooyd">GitHub</a>
+		<!-- Hero Section -->
+		<section class="hero" transition:fade={{ duration: 1200, easing: quintOut }}>
+			<div class="hero-background"></div>
+			<div class="hero-content">
+				<div class="hero-text" transition:fly={{ y: 50, duration: 1000, delay: 200, easing: quintOut }}>
+					<h1 class="name">Floyd Jones</h1>
+					<p class="title">Full Stack Developer</p>
+					<p class="intro">
+						Crafting exceptional digital experiences with 5+ years of expertise in scalable, 
+						user-centric applications that push the boundaries of modern web development.
+					</p>
+					<div class="social-links">
+						<a href="https://linkedin.com/in/flooyd" class="social-link linkedin" target="_blank">
+							<svg viewBox="0 0 24 24" fill="currentColor">
+								<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
+							</svg>
+							LinkedIn
+						</a>
+						<a href="https://github.com/flooyd" class="social-link github" target="_blank">
+							<svg viewBox="0 0 24 24" fill="currentColor">
+								<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
+							</svg>
+							GitHub
+						</a>
+					</div>
+				</div>
+				<div class="hero-visual" transition:scale={{ duration: 1000, delay: 400, easing: quintOut }}>
+					<div class="floating-elements">
+						<div class="element element-1"></div>
+						<div class="element element-2"></div>
+						<div class="element element-3"></div>
+					</div>
+				</div>
 			</div>
-		</div>
-		<div class="title">Full Stack Developer</div>
-		<div transition:fade={{ duration: 1000 }} class="intro">
-			Hello! I'm a passionate full-stack developer with 5+ years of experience. I specialize in
-			building scalable applications that deliver exceptional user experiences.
-		</div>
-		<div class="projects">Projects</div>
-		<div class="projects">
-			<div transition:fly={{ duration: 1000, x: -1000 }} class="project">
-				<a target="__blank" href="https://raw.githubusercontent.com/flooyd/floydportfolio/refs/heads/main/static/theforum.png">
-					<div>The Forum - Let AI generate a comment based on yours</div>
-					<img
-						src="./theforum.png"
-						alt="screenshot of app"
-					/>
-				</a>
+		</section>
+
+		<!-- Projects Section -->
+		<section class="projects-section" transition:fly={{ y: 100, duration: 1000, delay: 600 }}>
+			<div class="container">
+				<h2 class="section-title">Featured Projects</h2>
+				<div class="projects-grid">
+					{#each projects as project, i}
+						<div 
+							class="project-card" 
+							transition:fly={{ y: 50, duration: 800, delay: 100 * i, easing: quintOut }}
+						>
+							<div class="project-image">
+								<img src={project.image} alt={project.title} loading="lazy" />
+								<div class="project-overlay">
+									<a href={project.link} target="_blank" class="project-link">
+										<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+											<path d="m9 18 6-6-6-6"/>
+										</svg>
+									</a>
+								</div>
+							</div>
+							<div class="project-content">
+								<h3 class="project-title">{project.title}</h3>
+								<p class="project-description">{project.description}</p>
+								<div class="project-tech">
+									{#each project.tech as tech}
+										<span class="tech-tag">{tech}</span>
+									{/each}
+								</div>
+							</div>
+						</div>
+					{/each}
+				</div>
 			</div>
-			<div transition:fly={{ duration: 1000, x: -1000 }} class="project">
-				<a target="__blank" href="https://raw.githubusercontent.com/flooyd/floydportfolio/refs/heads/main/static/financetrackerweb.png">
-					<div>Finance Tracker - a React Native app to track income and expenses</div>
-					<img
-						src="./financetrackerweb.png"
-						alt="screenshot of app"
-					/>
-				</a>
+		</section>
+
+		<!-- Footer -->
+		<footer class="footer">
+			<div class="container">
+				<p>&copy; 2025 Floyd Jones. Crafted with ❤️</p>
 			</div>
-			<div transition:fly={{ duration: 1000, x: -1000 }} class="project">
-				<a target="__blank" href="https://github.com/flooyd/things">
-					<div>App Editor - An app editor made with SvelteKit and NestJS</div>
-					<img
-						src="https://github.com/flooyd/things/raw/main/public/images/grid.png?raw=true"
-						alt="screenshot of app"
-					/>
-				</a>
-			</div>
-			<div transition:fly={{ duration: 1000, x: -1000 }} class="project">
-				<a target="__blank" href="https://github.com/flooyd/weblearn">
-					<div>webLearn - A language learning site</div>
-					<img
-						src="https://raw.githubusercontent.com/flooyd/weblearn/refs/heads/main/static/images/weblearn3.png"
-						alt="screenshot of app"
-					/>
-				</a>
-			</div>
-			<div transition:fly={{ duration: 1000, x: -1000 }} class="project">
-				<a target="__blank" href="https://github.com/flooyd/mango">
-					<div>Mango - Dota 2 Replay Navigator</div>
-					<img
-						src="https://raw.githubusercontent.com/flooyd/mango/refs/heads/master/client/public/Mango.PNG"
-						alt="screenshot of app"
-					/>
-				</a>
-			</div>
-			<div transition:fly={{ duration: 1000, x: -1000 }} class="project">
-				<a target="__blank" href="https://github.com/flooyd/dota2lfg">
-					<div>Dota 2 LFG - A group finding app for Dota 2</div>
-					<img
-						src="https://github.com/flooyd/dota2lfg/raw/master/readme%20images/dota2lfg.PNG"
-						alt="screenshot of app"
-					/>
-				</a>
-			</div>
-			<div transition:fly={{ duration: 1000, x: -1000 }} class="project">
-				<a target="__blank" href="https://flooyd.github.io/Curiosity-and-Friends/">
-					<div>Curiosity and Friends - Browse Mars rover photos</div>
-					<img
-						src="https://github.com/flooyd/Curiosity-and-Friends/raw/master/images/caf.PNG?raw=true"
-						alt="screenshot of app"
-					/>
-				</a>
-			</div>
-			<div transition:fly={{ duration: 1000, x: -1000 }} class="project">
-				<a target="__blank" href="https://github.com/flooyd/solidtd">
-					<div>TD Map Editor - Made with Solid</div>
-					<img src="https://i.imgur.com/xKox8dl.png" alt="screenshot of game" />
-				</a>
-			</div>
-			<div transition:fly={{ duration: 1000, x: -1000 }} class="project">
-				<a
-					target="__blank"
-					href="https://raw.githubusercontent.com/flooyd/floydportfolio/refs/heads/main/static/cards.jpg"
-				>
-					<div>Drag and drop and flippable playing cards</div>
-					<img
-						src="https://raw.githubusercontent.com/flooyd/floydportfolio/refs/heads/main/static/cards.jpg"
-						alt="screenshot of game"
-					/>
-				</a>
-			</div>
-		</div>
+		</footer>
 	</main>
 {/if}
 
 <style>
-	main {
-		display: flex;
-		flex-direction: column;
-		height: 100%;
-		width: 100%;
+	:global(*) {
 		box-sizing: border-box;
-		font-family: 'Open Sans', sans-serif;
+	}
+
+	:global(body) {
+		margin: 0;
+		padding: 0;
+		overflow-x: hidden;
+	}
+
+	main {
+		min-height: 100vh;
+		font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
+		background: transparent;
+		color: #ffffff;
+	}
+
+	.container {
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 2rem;
+	}
+
+	/* Hero Section */
+	.hero {
+		position: relative;
+		min-height: 100vh;
+		display: flex;
+		align-items: center;
+		overflow: hidden;
+	}
+
+	.hero-background {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: 
+			radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
+			radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
+			radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
+		animation: float 20s ease-in-out infinite;
+	}
+
+	@keyframes float {
+		0%, 100% { transform: translateY(0px) rotate(0deg); }
+		50% { transform: translateY(-20px) rotate(1deg); }
+	}
+
+	.hero-content {
+		display: grid;
+		grid-template-columns: 1fr 1fr;
+		gap: 4rem;
+		align-items: center;
+		width: 100%;
+		max-width: 1200px;
+		margin: 0 auto;
+		padding: 0 2rem;
+		z-index: 1;
+		position: relative;
+	}
+
+	.hero-text {
+		z-index: 2;
 	}
 
 	.name {
-		font-size: 33.18px;
-		font-weight: bold;
-		font-family: 'Roboto Slab', serif;
-		display: flex;
-		align-items: center;
-		justify-content: space-between;
-		background: lightgreen;
-		padding: 11.11px 19.2px;
+		font-size: clamp(2.5rem, 5vw, 4.5rem);
+		font-weight: 800;
+		font-family: 'Poppins', sans-serif;
+		background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		margin: 0 0 1rem 0;
+		line-height: 1.1;
+		text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
 	}
 
 	.title {
-		font-size: 33.18px;
-		width: fit-content;
-		font-style: italic;
-		padding: 11.11px 19.2px;
+		font-size: clamp(1.2rem, 3vw, 1.8rem);
+		font-weight: 500;
+		color: rgba(255, 255, 255, 0.9);
+		margin: 0 0 2rem 0;
+		font-family: 'JetBrains Mono', monospace;
+		position: relative;
 	}
 
-	.projects {
-		font-size: 22.18px;
-		font-weight: bold;
-		padding: 11.11px 19.2px;
-		border-bottom: 3px solid black;
+	.title::before {
+		content: '> ';
+		color: #64ffda;
+		font-weight: 700;
 	}
 
 	.intro {
-		margin-top: 11;
-		font-size: 16px;
-		padding: 0px 19.2px;
+		font-size: clamp(1rem, 2vw, 1.2rem);
+		line-height: 1.6;
+		color: rgba(255, 255, 255, 0.8);
+		margin: 0 0 3rem 0;
+		max-width: 500px;
 	}
 
-	.project {
-		margin-top: 20px;
+	.social-links {
 		display: flex;
+		gap: 1.5rem;
+	}
+
+	.social-link {
+		display: flex;
+		align-items: center;
+		gap: 0.5rem;
+		padding: 0.75rem 1.5rem;
+		background: rgba(255, 255, 255, 0.1);
+		border: 1px solid rgba(255, 255, 255, 0.2);
+		border-radius: 50px;
+		color: white;
+		text-decoration: none;
+		font-weight: 500;
+		transition: all 0.3s ease;
+		backdrop-filter: blur(10px);
+	}
+
+	.social-link:hover {
+		background: rgba(255, 255, 255, 0.2);
+		border-color: rgba(255, 255, 255, 0.4);
+		transform: translateY(-2px);
+		box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+	}
+
+	.social-link svg {
+		width: 20px;
+		height: 20px;
+	}
+
+	.hero-visual {
+		display: flex;
+		justify-content: center;
+		align-items: center;
+		position: relative;
+		height: 500px;
+	}
+
+	.floating-elements {
+		position: relative;
+		width: 300px;
+		height: 300px;
+	}
+
+	.element {
+		position: absolute;
+		border-radius: 50%;
+		background: linear-gradient(135deg, rgba(255, 255, 255, 0.2), rgba(255, 255, 255, 0.05));
+		backdrop-filter: blur(20px);
+		border: 1px solid rgba(255, 255, 255, 0.1);
+	}
+
+	.element-1 {
+		width: 120px;
+		height: 120px;
+		top: 0;
+		left: 0;
+		animation: float1 6s ease-in-out infinite;
+	}
+
+	.element-2 {
+		width: 80px;
+		height: 80px;
+		top: 50px;
+		right: 0;
+		animation: float2 8s ease-in-out infinite;
+	}
+
+	.element-3 {
+		width: 100px;
+		height: 100px;
+		bottom: 0;
+		left: 50px;
+		animation: float3 7s ease-in-out infinite;
+	}
+
+	@keyframes float1 {
+		0%, 100% { transform: translate(0, 0) rotate(0deg); }
+		50% { transform: translate(10px, -20px) rotate(180deg); }
+	}
+
+	@keyframes float2 {
+		0%, 100% { transform: translate(0, 0) rotate(0deg); }
+		50% { transform: translate(-15px, 15px) rotate(-180deg); }
+	}
+
+	@keyframes float3 {
+		0%, 100% { transform: translate(0, 0) rotate(0deg); }
+		50% { transform: translate(20px, -10px) rotate(180deg); }
+	}
+
+	/* Projects Section */
+	.projects-section {
+		padding: 8rem 0;
+		background: rgba(0, 0, 0, 0.1);
+		backdrop-filter: blur(10px);
+	}
+
+	.section-title {
+		font-size: clamp(2rem, 4vw, 3rem);
+		font-weight: 700;
+		text-align: center;
+		margin: 0 0 4rem 0;
+		background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
+		background-clip: text;
+		-webkit-background-clip: text;
+		-webkit-text-fill-color: transparent;
+		font-family: 'Poppins', sans-serif;
+	}
+
+	.projects-grid {
+		display: grid;
+		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+		gap: 2rem;
+		margin-top: 3rem;
+	}
+
+	.project-card {
+		background: rgba(255, 255, 255, 0.05);
+		border-radius: 20px;
+		overflow: hidden;
+		border: 1px solid rgba(255, 255, 255, 0.1);
+		backdrop-filter: blur(20px);
+		transition: all 0.4s ease;
+		position: relative;
+	}
+
+	.project-card:hover {
+		transform: translateY(-10px);
+		background: rgba(255, 255, 255, 0.08);
+		border-color: rgba(255, 255, 255, 0.2);
+		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+	}
+
+	.project-image {
+		position: relative;
+		height: 200px;
+		overflow: hidden;
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+	}
+
+	.project-image img {
 		width: 100%;
 		height: 100%;
-		flex-direction: column;
-		gap: 13.33px;
-		padding: 11.11 19.2px;
-		border-top: 11.11px solid lightgreen;
+		object-fit: cover;
+		transition: transform 0.4s ease;
 	}
 
-	a {
-		font-size: 19.2px;
-		font-weight: bold;
+	.project-card:hover .project-image img {
+		transform: scale(1.1);
+	}
+
+	.project-overlay {
+		position: absolute;
+		top: 0;
+		left: 0;
+		right: 0;
+		bottom: 0;
+		background: rgba(0, 0, 0, 0.4);
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		opacity: 0;
+		transition: opacity 0.3s ease;
+	}
+
+	.project-card:hover .project-overlay {
+		opacity: 1;
+	}
+
+	.project-link {
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		width: 60px;
+		height: 60px;
+		background: rgba(255, 255, 255, 0.9);
+		border-radius: 50%;
+		color: #333;
+		transition: all 0.3s ease;
 		text-decoration: none;
-		color: black;
 	}
 
-	a div {
-		margin-bottom: 11.11px;
+	.project-link:hover {
+		background: white;
+		transform: scale(1.1);
 	}
 
-	.project a {
-		color: black;
+	.project-link svg {
+		width: 24px;
+		height: 24px;
 	}
 
-	img {
-		max-width: 90%;
+	.project-content {
+		padding: 2rem;
+	}
+
+	.project-title {
+		font-size: 1.5rem;
+		font-weight: 600;
+		margin: 0 0 1rem 0;
+		color: white;
+		font-family: 'Poppins', sans-serif;
+	}
+
+	.project-description {
+		font-size: 1rem;
+		line-height: 1.6;
+		color: rgba(255, 255, 255, 0.8);
+		margin: 0 0 1.5rem 0;
+	}
+
+	.project-tech {
+		display: flex;
+		flex-wrap: wrap;
+		gap: 0.5rem;
+	}
+
+	.tech-tag {
+		padding: 0.25rem 0.75rem;
+		background: rgba(100, 255, 218, 0.1);
+		border: 1px solid rgba(100, 255, 218, 0.3);
+		border-radius: 20px;
+		font-size: 0.875rem;
+		color: #64ffda;
+		font-weight: 500;
+	}
+
+	/* Footer */
+	.footer {
+		padding: 3rem 0;
+		text-align: center;
+		border-top: 1px solid rgba(255, 255, 255, 0.1);
+		background: rgba(0, 0, 0, 0.2);
+	}
+
+	.footer p {
+		margin: 0;
+		color: rgba(255, 255, 255, 0.6);
+		font-size: 1rem;
+	}
+
+	/* Responsive Design */
+	@media (max-width: 768px) {
+		.hero-content {
+			grid-template-columns: 1fr;
+			gap: 2rem;
+			text-align: center;
+		}
+
+		.hero-visual {
+			height: 300px;
+		}
+
+		.floating-elements {
+			width: 200px;
+			height: 200px;
+		}
+
+		.projects-grid {
+			grid-template-columns: 1fr;
+		}
+
+		.social-links {
+			justify-content: center;
+		}
+
+		.container {
+			padding: 0 1rem;
+		}
+	}
+
+	@media (max-width: 480px) {
+		.hero {
+			padding: 4rem 0;
+		}
+		
+		.projects-section {
+			padding: 4rem 0;
+		}
+
+		.project-card {
+			margin: 0 0.5rem;
+		}
 	}
 </style>
