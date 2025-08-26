@@ -71,7 +71,7 @@
 			description: "Drag-and-drop playing cards",
 			image: "https://raw.githubusercontent.com/flooyd/floydportfolio/refs/heads/main/static/cards.jpg",
 			link: "https://raw.githubusercontent.com/flooyd/floydportfolio/refs/heads/main/static/cards.jpg",
-			tech: ["Animation", "Physics", "JavaScript"]
+			tech: ["Animation", "Gaming", "JavaScript"]
 		}
 	];
 </script>
@@ -167,13 +167,15 @@
 		margin: 0;
 		padding: 0;
 		overflow-x: hidden;
+		background:#ffffff;
+		color:#111;
 	}
 
 	main {
 		min-height: 100vh;
 		font-family: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
-		background: transparent;
-		color: #ffffff;
+		background: #ffffff;
+		color: #111;
 	}
 
 	.container {
@@ -189,6 +191,7 @@
 		display: flex;
 		align-items: center;
 		overflow: hidden;
+		background:#ffffff;
 	}
 
 	.hero-background {
@@ -197,11 +200,12 @@
 		left: 0;
 		right: 0;
 		bottom: 0;
-		background: 
-			radial-gradient(circle at 20% 50%, rgba(120, 119, 198, 0.3) 0%, transparent 50%),
-			radial-gradient(circle at 80% 20%, rgba(255, 119, 198, 0.3) 0%, transparent 50%),
-			radial-gradient(circle at 40% 80%, rgba(120, 219, 255, 0.3) 0%, transparent 50%);
+		background:
+			radial-gradient(circle at 20% 50%, rgba(102, 126, 234, 0.15) 0%, transparent 55%),
+			radial-gradient(circle at 80% 20%, rgba(118, 75, 162, 0.18) 0%, transparent 55%),
+			radial-gradient(circle at 40% 80%, rgba(118, 75, 162, 0.12) 0%, transparent 60%);
 		animation: float 20s ease-in-out infinite;
+		pointer-events:none;
 	}
 
 	@keyframes float {
@@ -230,19 +234,15 @@
 		font-size: clamp(2.5rem, 5vw, 4.5rem);
 		font-weight: 800;
 		font-family: 'Poppins', sans-serif;
-		background: linear-gradient(135deg, #ffffff 0%, #f0f0f0 100%);
-		background-clip: text;
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
+		color:#111;
 		margin: 0 0 1rem 0;
-		line-height: 1.1;
-		text-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+		line-height: 1.05;
 	}
 
 	.title {
 		font-size: clamp(1.2rem, 3vw, 1.8rem);
 		font-weight: 500;
-		color: rgba(255, 255, 255, 0.9);
+		color: #444;
 		margin: 0 0 2rem 0;
 		font-family: 'JetBrains Mono', monospace;
 		position: relative;
@@ -250,16 +250,16 @@
 
 	.title::before {
 		content: '> ';
-		color: #64ffda;
+		color: darkgreen;
 		font-weight: 700;
 	}
 
 	.intro {
 		font-size: clamp(1rem, 2vw, 1.2rem);
 		line-height: 1.6;
-		color: rgba(255, 255, 255, 0.8);
+		color: #333;
 		margin: 0 0 3rem 0;
-		max-width: 500px;
+		max-width: 560px;
 	}
 
 	.social-links {
@@ -271,22 +271,22 @@
 		display: flex;
 		align-items: center;
 		gap: 0.5rem;
-		padding: 0.75rem 1.5rem;
-		background: rgba(255, 255, 255, 0.1);
-		border: 1px solid rgba(255, 255, 255, 0.2);
-		border-radius: 50px;
-		color: white;
+		padding: 0.65rem 1.25rem;
+		background: #fff;
+		border: 1px solid #e2e2e2;
+		border-radius: 40px;
+		color: #222;
 		text-decoration: none;
 		font-weight: 500;
 		transition: all 0.3s ease;
-		backdrop-filter: blur(10px);
+		box-shadow: 0 2px 4px rgba(0,0,0,0.06), 0 4px 14px rgba(0,0,0,0.08);
 	}
 
 	.social-link:hover {
-		background: rgba(255, 255, 255, 0.2);
-		border-color: rgba(255, 255, 255, 0.4);
+		background: #f5f5f5;
+		border-color: #d5d5d5;
 		transform: translateY(-2px);
-		box-shadow: 0 8px 25px rgba(0, 0, 0, 0.3);
+		box-shadow: 0 8px 22px rgba(0,0,0,0.12);
 	}
 
 	.social-link svg {
@@ -358,8 +358,8 @@
 	/* Projects Section */
 	.projects-section {
 		padding: 8rem 0;
-		background: rgba(0, 0, 0, 0.1);
-		backdrop-filter: blur(10px);
+		background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+		color:#fff;
 	}
 
 	.section-title {
@@ -367,11 +367,9 @@
 		font-weight: 700;
 		text-align: center;
 		margin: 0 0 4rem 0;
-		background: linear-gradient(135deg, #ffffff 0%, #e0e0e0 100%);
-		background-clip: text;
-		-webkit-background-clip: text;
-		-webkit-text-fill-color: transparent;
+		color:#fff;
 		font-family: 'Poppins', sans-serif;
+		text-shadow:0 4px 22px rgba(0,0,0,0.35);
 	}
 
 	.projects-grid {
@@ -382,20 +380,20 @@
 	}
 
 	.project-card {
-		background: rgba(255, 255, 255, 0.05);
+		background: rgba(255,255,255,0.08);
 		border-radius: 20px;
 		overflow: hidden;
-		border: 1px solid rgba(255, 255, 255, 0.1);
-		backdrop-filter: blur(20px);
+		border: 1px solid rgba(255,255,255,0.25);
+		backdrop-filter: blur(14px);
 		transition: all 0.4s ease;
 		position: relative;
 	}
 
 	.project-card:hover {
 		transform: translateY(-10px);
-		background: rgba(255, 255, 255, 0.08);
-		border-color: rgba(255, 255, 255, 0.2);
-		box-shadow: 0 20px 40px rgba(0, 0, 0, 0.3);
+		background: rgba(255,255,255,0.15);
+		border-color: rgba(255,255,255,0.45);
+		box-shadow: 0 20px 40px rgba(0,0,0,0.35);
 	}
 
 	.project-image {
@@ -462,18 +460,18 @@
 	}
 
 	.project-title {
-		font-size: 1.5rem;
+		font-size: 1.45rem;
 		font-weight: 600;
-		margin: 0 0 1rem 0;
-		color: white;
+		margin: 0 0 0.85rem 0;
+		color: #fff;
 		font-family: 'Poppins', sans-serif;
 	}
 
 	.project-description {
-		font-size: 1rem;
-		line-height: 1.6;
-		color: rgba(255, 255, 255, 0.8);
-		margin: 0 0 1.5rem 0;
+		font-size: 0.95rem;
+		line-height: 1.55;
+		color: rgba(255,255,255,0.82);
+		margin: 0 0 1.25rem 0;
 	}
 
 	.project-tech {
@@ -496,14 +494,15 @@
 	.footer {
 		padding: 3rem 0;
 		text-align: center;
-		border-top: 1px solid rgba(255, 255, 255, 0.1);
-		background: rgba(0, 0, 0, 0.2);
+		border-top: 1px solid #eee;
+		background: #fafafa;
+		color:#555;
 	}
 
 	.footer p {
 		margin: 0;
-		color: rgba(255, 255, 255, 0.6);
-		font-size: 1rem;
+		color: #666;
+		font-size: 0.95rem;
 	}
 
 	/* Responsive Design */
