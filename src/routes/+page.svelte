@@ -106,9 +106,30 @@
 				</div>
 				<div class="hero-visual" transition:scale={{ duration: 1000, delay: 400, easing: quintOut }}>
 					<div class="floating-elements">
-						<div class="element element-1"></div>
-						<div class="element element-2"></div>
-						<div class="element element-3"></div>
+						<div class="element element-1">
+							<div class="cube-face front"></div>
+							<div class="cube-face back"></div>
+							<div class="cube-face left"></div>
+							<div class="cube-face right"></div>
+							<div class="cube-face top"></div>
+							<div class="cube-face bottom"></div>
+						</div>
+						<div class="element element-2">
+							<div class="cube-face front"></div>
+							<div class="cube-face back"></div>
+							<div class="cube-face left"></div>
+							<div class="cube-face right"></div>
+							<div class="cube-face top"></div>
+							<div class="cube-face bottom"></div>
+						</div>
+						<div class="element element-3">
+							<div class="cube-face front"></div>
+							<div class="cube-face back"></div>
+							<div class="cube-face left"></div>
+							<div class="cube-face right"></div>
+							<div class="cube-face top"></div>
+							<div class="cube-face bottom"></div>
+						</div>
 					</div>
 				</div>
 			</div>
@@ -332,7 +353,7 @@
 		position: relative;
 		width: 300px;
 		height: 300px;
-		perspective: 1000px;
+		perspective: 1200px;
 	}
 
 	.element {
@@ -340,81 +361,97 @@
 		transform-style: preserve-3d;
 	}
 
-	.element::before,
-	.element::after {
-		content: '';
+	.cube-face {
 		position: absolute;
-		border: 2px solid rgba(255, 138, 0, 0.4);
-		background: rgba(255, 138, 0, 0.05);
-	}
-
-	/* Front face */
-	.element::before {
-		width: 100%;
-		height: 100%;
-		transform: translateZ(0);
-	}
-
-	/* Side faces created with box-shadow for depth effect */
-	.element::after {
-		width: 100%;
-		height: 100%;
-		transform: translateZ(-40px);
-		border-color: rgba(255, 138, 0, 0.2);
-		background: rgba(255, 138, 0, 0.02);
+		border: 2px solid rgba(255, 138, 0, 0.5);
+		background: rgba(255, 138, 0, 0.08);
+		backdrop-filter: blur(4px);
 	}
 
 	.element-1 {
-		width: 180px;
-		height: 180px;
+		width: 100px;
+		height: 100px;
 		top: -40px;
 		left: -40px;
-		animation: float1 6s ease-in-out infinite;
-		filter: drop-shadow(0 0 20px rgba(255, 138, 0, 0.3));
+		animation: float1 8s ease-in-out infinite;
 	}
+
+	.element-1 .cube-face {
+		width: 100px;
+		height: 100px;
+	}
+
+	.element-1 .front  { transform: translateZ(50px); }
+	.element-1 .back   { transform: translateZ(-50px) rotateY(180deg); }
+	.element-1 .left   { transform: rotateY(-90deg) translateZ(50px); }
+	.element-1 .right  { transform: rotateY(90deg) translateZ(50px); }
+	.element-1 .top    { transform: rotateX(90deg) translateZ(50px); }
+	.element-1 .bottom { transform: rotateX(-90deg) translateZ(50px); }
 
 	.element-2 {
-		width: 120px;
-		height: 120px;
+		width: 70px;
+		height: 70px;
 		top: 80px;
 		right: -20px;
-		animation: float2 8s ease-in-out infinite;
-		filter: drop-shadow(0 0 20px rgba(255, 138, 0, 0.3));
+		animation: float2 10s ease-in-out infinite;
 	}
 
+	.element-2 .cube-face {
+		width: 70px;
+		height: 70px;
+	}
+
+	.element-2 .front  { transform: translateZ(35px); }
+	.element-2 .back   { transform: translateZ(-35px) rotateY(180deg); }
+	.element-2 .left   { transform: rotateY(-90deg) translateZ(35px); }
+	.element-2 .right  { transform: rotateY(90deg) translateZ(35px); }
+	.element-2 .top    { transform: rotateX(90deg) translateZ(35px); }
+	.element-2 .bottom { transform: rotateX(-90deg) translateZ(35px); }
+
 	.element-3 {
-		width: 140px;
-		height: 140px;
+		width: 85px;
+		height: 85px;
 		bottom: -30px;
 		left: 80px;
-		animation: float3 7s ease-in-out infinite;
-		filter: drop-shadow(0 0 20px rgba(255, 138, 0, 0.3));
+		animation: float3 9s ease-in-out infinite;
 	}
+
+	.element-3 .cube-face {
+		width: 85px;
+		height: 85px;
+	}
+
+	.element-3 .front  { transform: translateZ(42.5px); }
+	.element-3 .back   { transform: translateZ(-42.5px) rotateY(180deg); }
+	.element-3 .left   { transform: rotateY(-90deg) translateZ(42.5px); }
+	.element-3 .right  { transform: rotateY(90deg) translateZ(42.5px); }
+	.element-3 .top    { transform: rotateX(90deg) translateZ(42.5px); }
+	.element-3 .bottom { transform: rotateX(-90deg) translateZ(42.5px); }
 
 	@keyframes float1 {
 		0%, 100% {
-			transform: translate(0, 0) rotateX(45deg) rotateY(0deg) rotateZ(45deg);
+			transform: translate(0, 0) rotateX(25deg) rotateY(0deg) rotateZ(15deg);
 		}
 		50% {
-			transform: translate(10px, -20px) rotateX(45deg) rotateY(180deg) rotateZ(45deg);
+			transform: translate(10px, -20px) rotateX(25deg) rotateY(360deg) rotateZ(15deg);
 		}
 	}
 
 	@keyframes float2 {
 		0%, 100% {
-			transform: translate(0, 0) rotateX(30deg) rotateY(0deg) rotateZ(15deg);
+			transform: translate(0, 0) rotateX(-20deg) rotateY(0deg) rotateZ(-10deg);
 		}
 		50% {
-			transform: translate(-15px, 15px) rotateX(30deg) rotateY(-180deg) rotateZ(15deg);
+			transform: translate(-15px, 15px) rotateX(-20deg) rotateY(-360deg) rotateZ(-10deg);
 		}
 	}
 
 	@keyframes float3 {
 		0%, 100% {
-			transform: translate(0, 0) rotateX(60deg) rotateY(0deg) rotateZ(-25deg);
+			transform: translate(0, 0) rotateX(35deg) rotateY(0deg) rotateZ(20deg);
 		}
 		50% {
-			transform: translate(20px, -10px) rotateX(60deg) rotateY(180deg) rotateZ(-25deg);
+			transform: translate(20px, -10px) rotateX(35deg) rotateY(360deg) rotateZ(20deg);
 		}
 	}
 
