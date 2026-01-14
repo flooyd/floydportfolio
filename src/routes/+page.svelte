@@ -254,7 +254,7 @@
 	}
 
 	.name {
-		font-size: clamp(4rem, 10vw, 9rem);
+		font-size: clamp(5rem, 15vw, 12rem);
 		font-weight: 200;
 		font-family: 'Newsreader', serif;
 		color: #fff;
@@ -265,7 +265,7 @@
 	}
 
 	.title {
-		font-size: clamp(0.85rem, 1.5vw, 1.1rem);
+		font-size: clamp(1.1rem, 2.5vw, 1.6rem);
 		font-weight: 400;
 		color: #ff8a00;
 		margin: 0 0 2rem 0;
@@ -282,11 +282,11 @@
 	}
 
 	.intro {
-		font-size: clamp(1.1rem, 2vw, 1.3rem);
+		font-size: clamp(1.3rem, 2.5vw, 1.7rem);
 		line-height: 1.8;
 		color: #a8a8a8;
 		margin: 0 auto 3rem auto;
-		max-width: 560px;
+		max-width: 620px;
 		font-weight: 200;
 	}
 
@@ -346,14 +346,14 @@
 		justify-content: center;
 		align-items: center;
 		position: relative;
-		height: 500px;
+		height: 600px;
 	}
 
 	.floating-elements {
 		position: relative;
-		width: 300px;
-		height: 300px;
-		perspective: 1200px;
+		width: 450px;
+		height: 450px;
+		perspective: 1500px;
 	}
 
 	.element {
@@ -369,64 +369,64 @@
 	}
 
 	.element-1 {
-		width: 100px;
-		height: 100px;
-		top: -40px;
-		left: -40px;
+		width: 150px;
+		height: 150px;
+		top: -60px;
+		left: -60px;
 		animation: float1 8s ease-in-out infinite;
 	}
 
 	.element-1 .cube-face {
-		width: 100px;
-		height: 100px;
+		width: 150px;
+		height: 150px;
 	}
 
-	.element-1 .front  { transform: translateZ(50px); }
-	.element-1 .back   { transform: translateZ(-50px) rotateY(180deg); }
-	.element-1 .left   { transform: rotateY(-90deg) translateZ(50px); }
-	.element-1 .right  { transform: rotateY(90deg) translateZ(50px); }
-	.element-1 .top    { transform: rotateX(90deg) translateZ(50px); }
-	.element-1 .bottom { transform: rotateX(-90deg) translateZ(50px); }
+	.element-1 .front  { transform: translateZ(75px); }
+	.element-1 .back   { transform: translateZ(-75px) rotateY(180deg); }
+	.element-1 .left   { transform: rotateY(-90deg) translateZ(75px); }
+	.element-1 .right  { transform: rotateY(90deg) translateZ(75px); }
+	.element-1 .top    { transform: rotateX(90deg) translateZ(75px); }
+	.element-1 .bottom { transform: rotateX(-90deg) translateZ(75px); }
 
 	.element-2 {
-		width: 70px;
-		height: 70px;
-		top: 80px;
-		right: -20px;
+		width: 110px;
+		height: 110px;
+		top: 120px;
+		right: -30px;
 		animation: float2 10s ease-in-out infinite;
 	}
 
 	.element-2 .cube-face {
-		width: 70px;
-		height: 70px;
+		width: 110px;
+		height: 110px;
 	}
 
-	.element-2 .front  { transform: translateZ(35px); }
-	.element-2 .back   { transform: translateZ(-35px) rotateY(180deg); }
-	.element-2 .left   { transform: rotateY(-90deg) translateZ(35px); }
-	.element-2 .right  { transform: rotateY(90deg) translateZ(35px); }
-	.element-2 .top    { transform: rotateX(90deg) translateZ(35px); }
-	.element-2 .bottom { transform: rotateX(-90deg) translateZ(35px); }
+	.element-2 .front  { transform: translateZ(55px); }
+	.element-2 .back   { transform: translateZ(-55px) rotateY(180deg); }
+	.element-2 .left   { transform: rotateY(-90deg) translateZ(55px); }
+	.element-2 .right  { transform: rotateY(90deg) translateZ(55px); }
+	.element-2 .top    { transform: rotateX(90deg) translateZ(55px); }
+	.element-2 .bottom { transform: rotateX(-90deg) translateZ(55px); }
 
 	.element-3 {
-		width: 85px;
-		height: 85px;
-		bottom: -30px;
-		left: 80px;
+		width: 130px;
+		height: 130px;
+		bottom: -45px;
+		left: 120px;
 		animation: float3 9s ease-in-out infinite;
 	}
 
 	.element-3 .cube-face {
-		width: 85px;
-		height: 85px;
+		width: 130px;
+		height: 130px;
 	}
 
-	.element-3 .front  { transform: translateZ(42.5px); }
-	.element-3 .back   { transform: translateZ(-42.5px) rotateY(180deg); }
-	.element-3 .left   { transform: rotateY(-90deg) translateZ(42.5px); }
-	.element-3 .right  { transform: rotateY(90deg) translateZ(42.5px); }
-	.element-3 .top    { transform: rotateX(90deg) translateZ(42.5px); }
-	.element-3 .bottom { transform: rotateX(-90deg) translateZ(42.5px); }
+	.element-3 .front  { transform: translateZ(65px); }
+	.element-3 .back   { transform: translateZ(-65px) rotateY(180deg); }
+	.element-3 .left   { transform: rotateY(-90deg) translateZ(65px); }
+	.element-3 .right  { transform: rotateY(90deg) translateZ(65px); }
+	.element-3 .top    { transform: rotateX(90deg) translateZ(65px); }
+	.element-3 .bottom { transform: rotateX(-90deg) translateZ(65px); }
 
 	@keyframes float1 {
 		0%, 100% {
@@ -650,13 +650,13 @@
 		}
 
 		.hero-visual {
-			height: 300px;
+			height: 350px;
 			margin-top: 20px;
 		}
 
 		.floating-elements {
-			width: 200px;
-			height: 200px;
+			width: 300px;
+			height: 300px;
 			margin-top: 20px;
 		}
 
