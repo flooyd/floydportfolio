@@ -244,7 +244,7 @@
 		width: 100%;
 		max-width: 1200px;
 		margin: 0 auto;
-		padding: 0 2rem;
+		padding: 2rem 3rem;
 		z-index: 1;
 		position: relative;
 	}
@@ -254,7 +254,7 @@
 	}
 
 	.name {
-		font-size: clamp(5rem, 15vw, 12rem);
+		font-size: clamp(4.5rem, 12vw, 10rem);
 		font-weight: 200;
 		font-family: 'Newsreader', serif;
 		color: #fff;
@@ -265,7 +265,7 @@
 	}
 
 	.title {
-		font-size: clamp(1.1rem, 2.5vw, 1.6rem);
+		font-size: clamp(1rem, 2vw, 1.4rem);
 		font-weight: 400;
 		color: #ff8a00;
 		margin: 0 0 2rem 0;
@@ -282,11 +282,11 @@
 	}
 
 	.intro {
-		font-size: clamp(1.3rem, 2.5vw, 1.7rem);
+		font-size: clamp(1.15rem, 2.2vw, 1.5rem);
 		line-height: 1.8;
 		color: #a8a8a8;
-		margin: 0 auto 3rem auto;
-		max-width: 620px;
+		margin: 0 auto 2.5rem auto;
+		max-width: 580px;
 		font-weight: 200;
 	}
 
@@ -467,7 +467,7 @@
 	}
 
 	.section-title {
-		font-size: clamp(3rem, 8vw, 7rem);
+		font-size: clamp(2.5rem, 7vw, 6rem);
 		font-weight: 800;
 		text-align: center;
 		margin: 0 0 4rem 0;
@@ -645,20 +645,96 @@
 	@media (max-width: 768px) {
 		.hero-content {
 			grid-template-columns: 1fr;
-			gap: 2rem;
+			gap: 1rem;
 			text-align: center;
 		}
 
+		.hero {
+			min-height: auto;
+			padding: 2rem 0;
+		}
+
+		.name {
+			font-size: clamp(3rem, 10vw, 4.5rem);
+			margin: 0 0 0.5rem 0;
+		}
+
+		.title {
+			margin: 0 0 1rem 0;
+		}
+
+		.intro {
+			margin: 0 auto 1.5rem auto;
+			font-size: clamp(1rem, 4vw, 1.15rem);
+		}
+
 		.hero-visual {
-			height: 350px;
-			margin-top: 20px;
+			height: 280px;
+			margin-top: 0;
 		}
 
 		.floating-elements {
-			width: 300px;
-			height: 300px;
-			margin-top: 20px;
+			width: 250px;
+			height: 250px;
+			margin-top: 0;
 		}
+
+		.element-1 {
+			width: 100px;
+			height: 100px;
+			top: -30px;
+			left: -30px;
+		}
+
+		.element-1 .cube-face {
+			width: 100px;
+			height: 100px;
+		}
+
+		.element-1 .front  { transform: translateZ(50px); }
+		.element-1 .back   { transform: translateZ(-50px) rotateY(180deg); }
+		.element-1 .left   { transform: rotateY(-90deg) translateZ(50px); }
+		.element-1 .right  { transform: rotateY(90deg) translateZ(50px); }
+		.element-1 .top    { transform: rotateX(90deg) translateZ(50px); }
+		.element-1 .bottom { transform: rotateX(-90deg) translateZ(50px); }
+
+		.element-2 {
+			width: 70px;
+			height: 70px;
+			top: 60px;
+			right: -15px;
+		}
+
+		.element-2 .cube-face {
+			width: 70px;
+			height: 70px;
+		}
+
+		.element-2 .front  { transform: translateZ(35px); }
+		.element-2 .back   { transform: translateZ(-35px) rotateY(180deg); }
+		.element-2 .left   { transform: rotateY(-90deg) translateZ(35px); }
+		.element-2 .right  { transform: rotateY(90deg) translateZ(35px); }
+		.element-2 .top    { transform: rotateX(90deg) translateZ(35px); }
+		.element-2 .bottom { transform: rotateX(-90deg) translateZ(35px); }
+
+		.element-3 {
+			width: 85px;
+			height: 85px;
+			bottom: -20px;
+			left: 60px;
+		}
+
+		.element-3 .cube-face {
+			width: 85px;
+			height: 85px;
+		}
+
+		.element-3 .front  { transform: translateZ(42.5px); }
+		.element-3 .back   { transform: translateZ(-42.5px) rotateY(180deg); }
+		.element-3 .left   { transform: rotateY(-90deg) translateZ(42.5px); }
+		.element-3 .right  { transform: rotateY(90deg) translateZ(42.5px); }
+		.element-3 .top    { transform: rotateX(90deg) translateZ(42.5px); }
+		.element-3 .bottom { transform: rotateX(-90deg) translateZ(42.5px); }
 
 		.projects-grid {
 			grid-template-columns: 1fr;
@@ -666,24 +742,46 @@
 
 		.social-links {
 			justify-content: center;
+			flex-wrap: wrap;
 		}
 
 		.container {
 			padding: 0 1rem;
 		}
+
+		.hero-content {
+			padding: 1rem 1.5rem;
+		}
 	}
 
 	@media (max-width: 480px) {
 		.hero {
-			padding: 4rem 0;
+			padding: 1.5rem 0;
 		}
-		
+
+		.name {
+			font-size: clamp(2.5rem, 12vw, 3.5rem);
+		}
+
 		.projects-section {
 			padding: 4rem 0;
 		}
 
+		.section-title {
+			font-size: clamp(2rem, 10vw, 3rem);
+		}
+
 		.project-card {
 			margin: 0 0.5rem;
+		}
+
+		.hero-visual {
+			height: 240px;
+		}
+
+		.floating-elements {
+			width: 200px;
+			height: 200px;
 		}
 	}
 </style>
