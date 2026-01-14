@@ -332,14 +332,36 @@
 		position: relative;
 		width: 300px;
 		height: 300px;
+		perspective: 1000px;
 	}
 
 	.element {
 		position: absolute;
-		border-radius: 0;
-		background: transparent;
-		border: 2px solid rgba(255, 138, 0, 0.3);
-		box-shadow: 0 0 30px rgba(255, 138, 0, 0.2), inset 0 0 30px rgba(255, 138, 0, 0.1);
+		transform-style: preserve-3d;
+	}
+
+	.element::before,
+	.element::after {
+		content: '';
+		position: absolute;
+		border: 2px solid rgba(255, 138, 0, 0.4);
+		background: rgba(255, 138, 0, 0.05);
+	}
+
+	/* Front face */
+	.element::before {
+		width: 100%;
+		height: 100%;
+		transform: translateZ(0);
+	}
+
+	/* Side faces created with box-shadow for depth effect */
+	.element::after {
+		width: 100%;
+		height: 100%;
+		transform: translateZ(-40px);
+		border-color: rgba(255, 138, 0, 0.2);
+		background: rgba(255, 138, 0, 0.02);
 	}
 
 	.element-1 {
@@ -348,7 +370,7 @@
 		top: -40px;
 		left: -40px;
 		animation: float1 6s ease-in-out infinite;
-		transform: rotate(45deg);
+		filter: drop-shadow(0 0 20px rgba(255, 138, 0, 0.3));
 	}
 
 	.element-2 {
@@ -357,7 +379,7 @@
 		top: 80px;
 		right: -20px;
 		animation: float2 8s ease-in-out infinite;
-		transform: rotate(15deg);
+		filter: drop-shadow(0 0 20px rgba(255, 138, 0, 0.3));
 	}
 
 	.element-3 {
@@ -366,22 +388,34 @@
 		bottom: -30px;
 		left: 80px;
 		animation: float3 7s ease-in-out infinite;
-		transform: rotate(-25deg);
+		filter: drop-shadow(0 0 20px rgba(255, 138, 0, 0.3));
 	}
 
 	@keyframes float1 {
-		0%, 100% { transform: translate(0, 0) rotate(0deg); }
-		50% { transform: translate(10px, -20px) rotate(180deg); }
+		0%, 100% {
+			transform: translate(0, 0) rotateX(45deg) rotateY(0deg) rotateZ(45deg);
+		}
+		50% {
+			transform: translate(10px, -20px) rotateX(45deg) rotateY(180deg) rotateZ(45deg);
+		}
 	}
 
 	@keyframes float2 {
-		0%, 100% { transform: translate(0, 0) rotate(0deg); }
-		50% { transform: translate(-15px, 15px) rotate(-180deg); }
+		0%, 100% {
+			transform: translate(0, 0) rotateX(30deg) rotateY(0deg) rotateZ(15deg);
+		}
+		50% {
+			transform: translate(-15px, 15px) rotateX(30deg) rotateY(-180deg) rotateZ(15deg);
+		}
 	}
 
 	@keyframes float3 {
-		0%, 100% { transform: translate(0, 0) rotate(0deg); }
-		50% { transform: translate(20px, -10px) rotate(180deg); }
+		0%, 100% {
+			transform: translate(0, 0) rotateX(60deg) rotateY(0deg) rotateZ(-25deg);
+		}
+		50% {
+			transform: translate(20px, -10px) rotateX(60deg) rotateY(180deg) rotateZ(-25deg);
+		}
 	}
 
 	/* Projects Section */
