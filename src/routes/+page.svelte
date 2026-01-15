@@ -11,6 +11,13 @@
 
 	const projects = [
 		{
+			title: "The Chat Room",
+			description: "AI-driven chat application with real-time messaging and smart responses",
+			image: "./chatroom.png",
+			link: "https://raw.githubusercontent.com/flooyd/floydportfolio/refs/heads/main/static/chatroom.png",
+			tech: ["AI", "WebSocket", "SvelteKit"]
+		},
+		{
 			title: "The Forum",
 			description: "AI-powered comment generation platform with intelligent conversation enhancement",
 			image: "./theforum.png",
