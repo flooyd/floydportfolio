@@ -14,7 +14,7 @@
 			title: "The Chat Room",
 			description: "AI-driven chat application with real-time messaging and smart responses",
 			image: "./chatroom.png",
-			link: "https://raw.githubusercontent.com/flooyd/floydportfolio/refs/heads/main/static/chatroom.png",
+			link: "https://github.com/flooyd/floydportfolio/blob/main/static/chatroom.png?raw=true",
 			tech: ["AI", "WebSocket", "SvelteKit"]
 		},
 		{
