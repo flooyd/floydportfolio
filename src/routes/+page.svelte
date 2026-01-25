@@ -261,7 +261,7 @@
 	}
 
 	.name {
-		font-size: clamp(4.5rem, 12vw, 10rem);
+		font-size: clamp(3.5rem, 10vw, 7rem);
 		font-weight: 200;
 		font-family: 'Newsreader', serif;
 		color: #fff;
@@ -272,10 +272,10 @@
 	}
 
 	.title {
-		font-size: clamp(1rem, 2vw, 1.4rem);
+		font-size: clamp(0.85rem, 1.8vw, 1.15rem);
 		font-weight: 400;
 		color: #ff8a00;
-		margin: 0 0 2rem 0;
+		margin: 0 0 1.5rem 0;
 		font-family: 'Fira Code', monospace;
 		position: relative;
 		text-transform: uppercase;
@@ -289,10 +289,10 @@
 	}
 
 	.intro {
-		font-size: clamp(1.15rem, 2.2vw, 1.5rem);
-		line-height: 1.8;
+		font-size: clamp(0.95rem, 1.8vw, 1.2rem);
+		line-height: 1.6;
 		color: #a8a8a8;
-		margin: 0 auto 2.5rem auto;
+		margin: 0 auto 2rem auto;
 		max-width: 580px;
 		font-weight: 200;
 	}
@@ -320,6 +320,7 @@
 		font-family: 'Fira Code', monospace;
 		position: relative;
 		overflow: hidden;
+		z-index: 10;
 	}
 
 	.social-link::before {
@@ -353,7 +354,7 @@
 		justify-content: center;
 		align-items: center;
 		position: relative;
-		height: 600px;
+		height: 500px;
 	}
 
 	.floating-elements {
