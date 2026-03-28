@@ -1,38 +1,32 @@
-# create-svelte
+# Floyd Jones — Portfolio
 
-Everything you need to build a Svelte project, powered by [`create-svelte`](https://github.com/sveltejs/kit/tree/main/packages/create-svelte).
+Personal portfolio site for Floyd Jones, Full Stack Developer. Built with [SvelteKit](https://kit.svelte.dev/) and deployed on Vercel.
 
-## Creating a project
+## Screenshots
 
-If you're seeing this, you've probably already done this step. Congrats!
+![The Chat Room project](static/chatroom.png)
+![Finance Tracker project](static/financetrackerweb.png)
 
-```bash
-# create a new project in the current directory
-npm create svelte@latest
+## Tech Stack
 
-# create a new project in my-app
-npm create svelte@latest my-app
-```
+- **Framework:** SvelteKit
+- **Styling:** Scoped CSS with CSS animations
+- **Deployment:** Vercel (`@sveltejs/adapter-vercel`)
 
-## Developing
-
-Once you've created a project and installed dependencies with `npm install` (or `pnpm install` or `yarn`), start a development server:
+## Getting Started
 
 ```bash
+npm install
 npm run dev
-
-# or start the server and open the app in a new browser tab
-npm run dev -- --open
 ```
 
-## Building
+Open [http://localhost:5173](http://localhost:5173) in your browser.
 
-To create a production version of your app:
+## Other Commands
 
-```bash
-npm run build
-```
-
-You can preview the production build with `npm run preview`.
-
-> To deploy your app, you may need to install an [adapter](https://kit.svelte.dev/docs/adapters) for your target environment.
+| Command | Description |
+|---|---|
+| `npm run build` | Production build |
+| `npm run preview` | Preview production build |
+| `npm run lint` | Run Prettier + ESLint |
+| `npm run format` | Auto-format code |
