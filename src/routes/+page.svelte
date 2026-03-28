@@ -11,6 +11,13 @@
 
 	const projects = [
 		{
+			title: "Language Learn",
+			description: "Interactive language learning platform with gamified experience",
+			image: "https://raw.githubusercontent.com/flooyd/language-learn/refs/heads/main/static/home.png",
+			link: "https://github.com/flooyd/language-learn",
+			tech: ["Education", "JavaScript", "Web"]
+		},
+		{
 			title: "The Chat Room",
 			description: "AI-driven chat application with real-time messaging and smart responses",
 			image: "./chatroom.png",
@@ -37,13 +44,6 @@
 			image: "https://github.com/flooyd/things/raw/main/public/images/grid.png?raw=true",
 			link: "https://github.com/flooyd/things",
 			tech: ["SvelteKit", "NestJS", "TypeScript"]
-		},
-		{
-			title: "WebLearn",
-			description: "Interactive language learning platform with gamified experience",
-			image: "https://raw.githubusercontent.com/flooyd/weblearn/refs/heads/main/static/images/weblearn3.png",
-			link: "https://github.com/flooyd/weblearn",
-			tech: ["Education", "JavaScript", "Web"]
 		},
 		{
 			title: "Mango",
@@ -73,13 +73,6 @@
 			link: "https://github.com/flooyd/solidtd",
 			tech: ["Solid.js", "Gaming", "Editor"]
 		},
-		{
-			title: "Interactive Cards",
-			description: "Drag-and-drop playing cards",
-			image: "https://raw.githubusercontent.com/flooyd/floydportfolio/refs/heads/main/static/cards.jpg",
-			link: "https://raw.githubusercontent.com/flooyd/floydportfolio/refs/heads/main/static/cards.jpg",
-			tech: ["Animation", "Gaming", "JavaScript"]
-		}
 	];
 </script>
 
