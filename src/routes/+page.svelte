@@ -1,795 +1,835 @@
 <script>
 	import { onMount } from 'svelte';
-	import { fade, fly, scale } from 'svelte/transition';
+	import { fade, fly } from 'svelte/transition';
 	import { quintOut } from 'svelte/easing';
-	let ready = false;
-	let currentProject = 0;
 
-	onMount(() => {
-		ready = true;
-	});
+	let ready = false;
+	onMount(() => { ready = true; });
+
+	const youtubeId = 'aTI3RknsNMM';
+	const email = 'floydtjones@gmail.com';
+	const linkedin = 'https://linkedin.com/in/flooyd';
+	const github = 'https://github.com/flooyd';
 
 	const projects = [
 		{
-			title: "The Chat Room",
-			description: "AI-driven chat application with real-time messaging and smart responses",
-			image: "./chatroom.png",
-			link: "https://github.com/flooyd/floydportfolio/blob/main/static/chatroom.png?raw=true",
-			tech: ["AI", "WebSocket", "SvelteKit"]
+			title: 'finTrack',
+			featured: true,
+			desc: 'A money tracker that gets out of your way — log income and expenses in one keystroke and watch your net worth climb in real time.',
+			image: '/networth.png',
+			link: "https://project-r11eo.vercel.app",
+			tech: ['SvelteKit', 'Charts', 'Finance']
 		},
 		{
-			title: "The Forum",
-			description: "AI-powered comment generation platform with intelligent conversation enhancement",
-			image: "./theforum.png",
-			link: "https://raw.githubusercontent.com/flooyd/floydportfolio/refs/heads/main/static/theforum.png",
-			tech: ["AI", "React", "Node.js"]
+			title: 'Language Learn',
+			spotlight: true,
+			desc: 'Interactive, gamified language-learning platform with flashcards and quizzes.',
+			image: 'https://raw.githubusercontent.com/flooyd/language-learn/refs/heads/main/static/home.png',
+			link: 'https://language-learn-nine.vercel.app/',
+			tech: ['Education', 'JavaScript', 'Web']
 		},
 		{
-			title: "Finance Tracker",
-			description: "Comprehensive React Native app for income and expense management",
-			image: "./financetrackerweb.png",
-			link: "https://raw.githubusercontent.com/flooyd/floydportfolio/refs/heads/main/static/financetrackerweb.png",
-			tech: ["React Native", "Mobile", "Finance"]
+			title: 'The Chat Room',
+			desc: 'AI-driven real-time chat with smart responses and live presence.',
+			image: '/chatroom.png',
+			link: "https://github.com/flooyd/chatroom",
+			tech: ['AI', 'WebSocket', 'SvelteKit']
 		},
 		{
-			title: "App Editor",
-			description: "Full-stack application builder with SvelteKit frontend and NestJS backend",
-			image: "https://github.com/flooyd/things/raw/main/public/images/grid.png?raw=true",
-			link: "https://github.com/flooyd/things",
-			tech: ["SvelteKit", "NestJS", "TypeScript"]
+			title: 'The Forum',
+			desc: 'AI-powered comment generation and conversation enhancement.',
+			image: '/theforum.png',
+			link: 'https://github.com/flooyd/forum',
+			tech: ['AI', 'React', 'Node.js']
 		},
 		{
-			title: "WebLearn",
-			description: "Interactive language learning platform with gamified experience",
-			image: "https://raw.githubusercontent.com/flooyd/weblearn/refs/heads/main/static/images/weblearn3.png",
-			link: "https://github.com/flooyd/weblearn",
-			tech: ["Education", "JavaScript", "Web"]
+			title: 'Mango',
+			desc: 'Advanced Dota 2 replay analysis and navigation tool.',
+			image: 'https://raw.githubusercontent.com/flooyd/mango/refs/heads/master/client/public/Mango.PNG',
+			link: 'https://github.com/flooyd/mango',
+			tech: ['React', 'Data Viz', 'Gaming']
 		},
 		{
-			title: "Mango",
-			description: "Advanced Dota 2 replay analysis and navigation tool",
-			image: "https://raw.githubusercontent.com/flooyd/mango/refs/heads/master/client/public/Mango.PNG",
-			link: "https://github.com/flooyd/mango",
-			tech: ["Gaming", "Data Analysis", "React"]
+			title: 'Dota 2 LFG',
+			desc: 'Team finding and matchmaking for Dota 2 players.',
+			image: 'https://github.com/flooyd/dota2lfg/raw/master/readme%20images/dota2lfg.PNG',
+			link: 'https://github.com/flooyd/dota2lfg',
+			tech: ['Gaming', 'Community', 'Node.js']
 		},
 		{
-			title: "Dota 2 LFG",
-			description: "Team finding and matchmaking application for Dota 2 players",
-			image: "https://github.com/flooyd/dota2lfg/raw/master/readme%20images/dota2lfg.PNG",
-			link: "https://github.com/flooyd/dota2lfg",
-			tech: ["Gaming", "Community", "Node.js"]
+			title: 'Curiosity & Friends',
+			desc: 'Mars rover photo browser built on the NASA API.',
+			image: 'https://github.com/flooyd/Curiosity-and-Friends/raw/master/images/caf.PNG?raw=true',
+			link: 'https://flooyd.github.io/Curiosity-and-Friends/',
+			tech: ['NASA API', 'Space', 'Vue.js']
 		},
 		{
-			title: "Curiosity and Friends",
-			description: "Mars rover photo browser with NASA API integration",
-			image: "https://github.com/flooyd/Curiosity-and-Friends/raw/master/images/caf.PNG?raw=true",
-			link: "https://flooyd.github.io/Curiosity-and-Friends/",
-			tech: ["NASA API", "Space", "Vue.js"]
-		},
-		{
-			title: "TD Map Editor",
-			description: "Tower Defense map creation tool built with Solid.js",
-			image: "https://i.imgur.com/xKox8dl.png",
-			link: "https://github.com/flooyd/solidtd",
-			tech: ["Solid.js", "Gaming", "Editor"]
-		},
-		{
-			title: "Interactive Cards",
-			description: "Drag-and-drop playing cards",
-			image: "https://raw.githubusercontent.com/flooyd/floydportfolio/refs/heads/main/static/cards.jpg",
-			link: "https://raw.githubusercontent.com/flooyd/floydportfolio/refs/heads/main/static/cards.jpg",
-			tech: ["Animation", "Gaming", "JavaScript"]
+			title: 'TD Map Editor',
+			desc: 'Tower-defense map creation tool built with Solid.js.',
+			image: 'https://i.imgur.com/xKox8dl.png',
+			link: 'https://github.com/flooyd/solidtd',
+			tech: ['Solid.js', 'Gaming', 'Editor']
 		}
 	];
 </script>
 
+<svelte:head>
+	<link rel="preconnect" href="https://fonts.googleapis.com" />
+	<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin="anonymous" />
+	<link
+		href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@400;500;600;700&family=JetBrains+Mono:wght@400;500;600&display=swap"
+		rel="stylesheet"
+	/>
+</svelte:head>
+
 {#if ready}
-	<main>
-		<!-- Hero Section -->
-		<section class="hero" transition:fade={{ duration: 1200, easing: quintOut }}>
-			<div class="hero-background"></div>
-			<div class="hero-content">
-				<div class="hero-text" transition:fly={{ y: 50, duration: 1000, delay: 200, easing: quintOut }}>
-					<h1 class="name">Floyd Jones</h1>
-					<p class="title">Full Stack Developer</p>
-					<p class="intro">
-						Crafting exceptional digital experiences with 5+ years of expertise in scalable, 
-						user-centric applications that push the boundaries of modern web development.
-					</p>
-					<div class="social-links">
-						<a href="https://linkedin.com/in/flooyd" class="social-link linkedin" target="_blank">
-							<svg viewBox="0 0 24 24" fill="currentColor">
-								<path d="M20.447 20.452h-3.554v-5.569c0-1.328-.027-3.037-1.852-3.037-1.853 0-2.136 1.445-2.136 2.939v5.667H9.351V9h3.414v1.561h.046c.477-.9 1.637-1.85 3.37-1.85 3.601 0 4.267 2.37 4.267 5.455v6.286zM5.337 7.433c-1.144 0-2.063-.926-2.063-2.065 0-1.138.92-2.063 2.063-2.063 1.14 0 2.064.925 2.064 2.063 0 1.139-.925 2.065-2.064 2.065zm1.782 13.019H3.555V9h3.564v11.452zM22.225 0H1.771C.792 0 0 .774 0 1.729v20.542C0 23.227.792 24 1.771 24h20.451C23.2 24 24 23.227 24 22.271V1.729C24 .774 23.2 0 22.222 0h.003z"/>
-							</svg>
-							LinkedIn
-						</a>
-						<a href="https://github.com/flooyd" class="social-link github" target="_blank">
-							<svg viewBox="0 0 24 24" fill="currentColor">
-								<path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/>
-							</svg>
-							GitHub
-						</a>
-					</div>
+	<header class="topbar" transition:fade={{ duration: 700 }}>
+		<a href="#top" class="wordmark"><span class="mark">FJ</span> Floyd Jones</a>
+		<nav class="topnav">
+			<a href="#work" class="hide">work</a>
+			<span class="ndot hide"></span>
+			<a href={linkedin} target="_blank" rel="noopener">linkedin</a>
+			<a href={github} target="_blank" rel="noopener">github</a>
+			<a href="mailto:{email}">email</a>
+		</nav>
+	</header>
+
+	<main id="top">
+		<!-- ===================== HERO ===================== -->
+		<section class="hero" transition:fly={{ y: 30, duration: 900, easing: quintOut }}>
+			<span class="eyebrow"><span class="blip"></span><span>$</span>&nbsp;<b>full-stack-developer</b></span>
+			<h1 class="name">Floyd <span class="grad">Jones</span></h1>
+			<p class="tagline">
+				I build <b>reliable, user-first web apps</b> — from real-time chat to finance tooling — with 5+
+				years across the full stack.
+			</p>
+			<div class="cta">
+				<a href={linkedin} target="_blank" rel="noopener" class="btn">
+					<svg viewBox="0 0 24 24" fill="currentColor"><path d="M20.45 20.45h-3.55v-5.57c0-1.33-.03-3.04-1.85-3.04-1.86 0-2.14 1.45-2.14 2.94v5.67H9.35V9h3.41v1.56h.05c.47-.9 1.64-1.85 3.37-1.85 3.6 0 4.27 2.37 4.27 5.46v6.28zM5.34 7.43a2.06 2.06 0 1 1 0-4.12 2.06 2.06 0 0 1 0 4.12zM7.12 20.45H3.56V9h3.56v11.45zM22.22 0H1.77C.79 0 0 .77 0 1.73v20.54C0 23.23.79 24 1.77 24h20.45c.98 0 1.78-.77 1.78-1.73V1.73C24 .77 23.2 0 22.22 0z"/></svg>
+					LinkedIn
+				</a>
+				<a href={github} target="_blank" rel="noopener" class="btn">
+					<svg viewBox="0 0 24 24" fill="currentColor"><path d="M12 0C5.37 0 0 5.37 0 12c0 5.3 3.44 9.8 8.21 11.39.6.11.79-.26.79-.58v-2.23c-3.34.72-4.04-1.42-4.04-1.42-.54-1.39-1.33-1.76-1.33-1.76-1.09-.74.08-.73.08-.73 1.2.08 1.84 1.24 1.84 1.24 1.07 1.83 2.81 1.3 3.49 1 .11-.78.42-1.31.76-1.61-2.67-.3-5.47-1.33-5.47-5.93 0-1.31.47-2.38 1.24-3.22-.13-.3-.54-1.52.12-3.18 0 0 1.01-.32 3.3 1.23a11.5 11.5 0 0 1 6.01 0c2.29-1.55 3.3-1.23 3.3-1.23.66 1.66.25 2.88.12 3.18.77.84 1.23 1.91 1.23 3.22 0 4.61-2.81 5.63-5.49 5.92.43.37.82 1.1.82 2.22v3.29c0 .32.19.69.8.58A12 12 0 0 0 24 12c0-6.63-5.37-12-12-12z"/></svg>
+					GitHub
+				</a>
+				<a href="mailto:{email}" class="btn primary">
+					<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 6 9 7 9-7"/></svg>
+					Get in touch
+				</a>
+			</div>
+
+			<div class="media">
+				<div class="frame graph">
+					<span class="cap"><span class="blip"></span>finTrack — net worth</span>
+					<img src="/networth.png" alt="finTrack net worth graph showing $48,210 climbing over a year" />
 				</div>
-				<div class="hero-visual" transition:scale={{ duration: 1000, delay: 400, easing: quintOut }}>
-					<div class="floating-elements">
-						<div class="element element-1">
-							<div class="cube-face front"></div>
-							<div class="cube-face back"></div>
-							<div class="cube-face left"></div>
-							<div class="cube-face right"></div>
-							<div class="cube-face top"></div>
-							<div class="cube-face bottom"></div>
-						</div>
-						<div class="element element-2">
-							<div class="cube-face front"></div>
-							<div class="cube-face back"></div>
-							<div class="cube-face left"></div>
-							<div class="cube-face right"></div>
-							<div class="cube-face top"></div>
-							<div class="cube-face bottom"></div>
-						</div>
-						<div class="element element-3">
-							<div class="cube-face front"></div>
-							<div class="cube-face back"></div>
-							<div class="cube-face left"></div>
-							<div class="cube-face right"></div>
-							<div class="cube-face top"></div>
-							<div class="cube-face bottom"></div>
-						</div>
-					</div>
+				<div class="frame video">
+					<span class="cap"><span class="blip"></span>Mango in action</span>
+					<iframe
+						src="https://www.youtube.com/embed/{youtubeId}?rel=0"
+						title="Floyd Jones — project walkthrough"
+						allow="accelerometer; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+						allowfullscreen
+					></iframe>
 				</div>
 			</div>
+
+			<span class="scrollcue">selected work<span class="ln"></span></span>
 		</section>
 
-		<!-- Projects Section -->
-		<section class="projects-section" transition:fly={{ y: 100, duration: 1000, delay: 600 }}>
-			<div class="container">
-				<h2 class="section-title">Featured Projects</h2>
-				<div class="projects-grid">
-					{#each projects as project, i}
-						<div 
-							class="project-card" 
-							transition:fly={{ y: 50, duration: 800, delay: 100 * i, easing: quintOut }}
+		<!-- ===================== WORK ===================== -->
+		<section class="work" id="work">
+			<div class="wrap">
+				<div class="work-head">
+					<h2>Selected Work</h2>
+					<span class="meta">// <b>{projects.length} projects</b> · full-stack, AI &amp; gaming</span>
+				</div>
+				<div class="grid">
+					{#each projects as p}
+						<a
+							class="card"
+							class:featured={p.featured}
+							class:spotlight={p.spotlight}
+							href={p.link}
+							target="_blank"
+							rel="noopener"
 						>
-							<div class="project-image">
-								<img src={project.image} alt={project.title} loading="lazy" />
-								<div class="project-overlay">
-									<a href={project.link} target="_blank" class="project-link">
-										<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
-											<path d="m9 18 6-6-6-6"/>
-										</svg>
-									</a>
+							<span class="go">
+								<svg viewBox="0 0 24 24" fill="none" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M7 17 17 7M9 7h8v8"/></svg>
+							</span>
+							<div class="shot"><img src={p.image} alt={p.title} loading="lazy" /></div>
+							<div class="body">
+								{#if p.featured}<span class="ribbon">NEW · FEATURED</span>{/if}
+								<h3>{p.title}</h3>
+								<p>{p.desc}</p>
+								<div class="tags">
+									{#each p.tech as t}<span class="tag">{t}</span>{/each}
 								</div>
 							</div>
-							<div class="project-content">
-								<h3 class="project-title">{project.title}</h3>
-								<p class="project-description">{project.description}</p>
-								<div class="project-tech">
-									{#each project.tech as tech}
-										<span class="tech-tag">{tech}</span>
-									{/each}
-								</div>
-							</div>
-						</div>
+						</a>
 					{/each}
 				</div>
 			</div>
 		</section>
 
-		<!-- Footer -->
-		<footer class="footer">
-			<div class="container">
-				<p>&copy; 2025 Floyd Jones. Crafted with ❤️</p>
+		<!-- ===================== CONTACT ===================== -->
+		<section class="contact">
+			<div class="contact-inner">
+				<div>
+					<h2>Let's build something solid.</h2>
+					<p>
+						Open to full-stack roles and freelance projects. The fastest way to reach me is email — I
+						usually reply within a day.
+					</p>
+				</div>
+				<div class="contact-cta">
+					<a href="mailto:{email}" class="btn email">
+						<svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2.5" y="4.5" width="19" height="15" rx="2"/><path d="m3 6 9 7 9-7"/></svg>
+						{email}
+					</a>
+					<a href={linkedin} target="_blank" rel="noopener" class="btn ghost">LinkedIn</a>
+					<a href={github} target="_blank" rel="noopener" class="btn ghost">GitHub</a>
+				</div>
 			</div>
-		</footer>
+		</section>
 	</main>
+
+	<footer>
+		<div class="foot-inner">
+			<span>© 2026 Floyd Jones</span>
+			<div class="foot-links">
+				<a href={linkedin} target="_blank" rel="noopener">LinkedIn</a>
+				<a href={github} target="_blank" rel="noopener">GitHub</a>
+				<a href="mailto:{email}">Email</a>
+			</div>
+		</div>
+	</footer>
 {/if}
 
 <style>
-	:global(*) {
-		box-sizing: border-box;
+	:global(html) {
+		scroll-behavior: smooth;
 	}
-
 	:global(body) {
 		margin: 0;
-		padding: 0;
-		overflow-x: hidden;
-		background: #0a0a0a;
-		color: #e8e8e8;
+		background: #e9eef4;
+		color: #16202b;
+		font-family: 'Space Grotesk', system-ui, sans-serif;
+		-webkit-font-smoothing: antialiased;
 	}
 
-	main {
-		min-height: 100vh;
-		font-family: 'IBM Plex Sans', -apple-system, BlinkMacSystemFont, sans-serif;
-		background: #0a0a0a;
-		color: #e8e8e8;
+	:root {
+		--bg: #e9eef4;
+		--bg-2: #f3f6fa;
+		--surface: #ffffff;
+		--ink: #16202b;
+		--muted: #5d6b7a;
+		--line: #d8e0ea;
+		--blue: #2f7fc4;
+		--blue-bright: #4ba3e3;
+		--blue-deep: #215f96;
+		--blue-fill: #e6f1fb;
+		--shadow: 0 1px 2px rgba(22, 32, 43, 0.04), 0 12px 34px rgba(33, 95, 150, 0.1);
+		--shadow-lg: 0 2px 6px rgba(22, 32, 43, 0.06), 0 30px 70px rgba(33, 95, 150, 0.18);
+		--mono: 'JetBrains Mono', ui-monospace, monospace;
+		--sans: 'Space Grotesk', system-ui, sans-serif;
 	}
-
-	.container {
-		max-width: 1200px;
-		margin: 0 auto;
-		padding: 0 2rem;
+	* {
+		box-sizing: border-box;
 	}
-
-	/* Hero Section */
-	.hero {
-		position: relative;
-		min-height: 100vh;
-		display: flex;
-		align-items: center;
-		overflow: hidden;
-		background: #0a0a0a;
-	}
-
-	.hero-background {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background:
-			repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(255, 138, 0, 0.03) 2px, rgba(255, 138, 0, 0.03) 4px),
-			repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(255, 138, 0, 0.03) 2px, rgba(255, 138, 0, 0.03) 4px),
-			radial-gradient(ellipse at 20% 40%, rgba(255, 138, 0, 0.15) 0%, transparent 50%),
-			radial-gradient(ellipse at 80% 60%, rgba(255, 69, 0, 0.12) 0%, transparent 50%),
-			linear-gradient(180deg, #0a0a0a 0%, #050505 100%);
-		animation: float 20s ease-in-out infinite;
-		pointer-events: none;
-	}
-
-	@keyframes float {
-		0%, 100% { transform: translateY(0px) rotate(0deg); }
-		50% { transform: translateY(-20px) rotate(1deg); }
-	}
-
-	.hero-content {
-		display: grid;
-		grid-template-columns: 1fr 1fr;
-		gap: 4rem;
-		align-items: center;
-		width: 100%;
-		max-width: 1200px;
-		margin: 0 auto;
-		padding: 2rem 3rem;
-		z-index: 1;
-		position: relative;
-	}
-
-	.hero-text {
-		z-index: 2;
-	}
-
-	.name {
-		font-size: clamp(3.5rem, 10vw, 7rem);
-		font-weight: 200;
-		font-family: 'Newsreader', serif;
-		color: #fff;
-		margin: 0 0 1rem 0;
-		line-height: 0.95;
-		letter-spacing: -0.04em;
-		text-shadow: 0 0 40px rgba(255, 138, 0, 0.3);
-	}
-
-	.title {
-		font-size: clamp(0.85rem, 1.8vw, 1.15rem);
-		font-weight: 400;
-		color: #ff8a00;
-		margin: 0 0 1.5rem 0;
-		font-family: 'Fira Code', monospace;
-		position: relative;
-		text-transform: uppercase;
-		letter-spacing: 0.15em;
-	}
-
-	.title::before {
-		content: '$ ';
-		color: #ff4500;
-		font-weight: 700;
-	}
-
-	.intro {
-		font-size: clamp(0.95rem, 1.8vw, 1.2rem);
-		line-height: 1.6;
-		color: #a8a8a8;
-		margin: 0 auto 2rem auto;
-		max-width: 580px;
-		font-weight: 200;
-	}
-
-	.social-links {
-		display: flex;
-		gap: 1.5rem;
-	}
-
-	.social-link {
-		display: flex;
-		align-items: center;
-		gap: 0.5rem;
-		padding: 0.75rem 1.5rem;
-		background: transparent;
-		border: 1px solid rgba(255, 138, 0, 0.3);
-		border-radius: 0;
-		color: #ff8a00;
+	a {
+		color: inherit;
 		text-decoration: none;
-		font-weight: 600;
-		font-size: 0.85rem;
-		text-transform: uppercase;
-		letter-spacing: 0.1em;
-		transition: all 0.3s ease;
-		font-family: 'Fira Code', monospace;
-		position: relative;
-		overflow: hidden;
-		z-index: 10;
+	}
+	img {
+		display: block;
+		max-width: 100%;
 	}
 
-	.social-link::before {
-		content: '';
-		position: absolute;
-		top: 0;
-		left: -100%;
-		width: 100%;
-		height: 100%;
-		background: rgba(255, 138, 0, 0.1);
-		transition: left 0.3s ease;
-	}
-
-	.social-link:hover::before {
-		left: 0;
-	}
-
-	.social-link:hover {
-		border-color: #ff8a00;
-		transform: translateX(4px);
-		box-shadow: -4px 4px 0 rgba(255, 138, 0, 0.3);
-	}
-
-	.social-link svg {
-		width: 20px;
-		height: 20px;
-	}
-
-	.hero-visual {
+	/* top bar */
+	.topbar {
+		height: 62px;
 		display: flex;
-		justify-content: center;
 		align-items: center;
+		justify-content: space-between;
+		padding: 0 clamp(20px, 5vw, 64px);
 		position: relative;
-		height: 500px;
+		z-index: 5;
 	}
-
-	.floating-elements {
-		position: relative;
-		width: 450px;
-		height: 450px;
-		perspective: 1500px;
+	.wordmark {
+		display: flex;
+		align-items: center;
+		gap: 11px;
+		font-weight: 600;
+		letter-spacing: -0.01em;
 	}
-
-	.element {
-		position: absolute;
-		transform-style: preserve-3d;
-	}
-
-	.cube-face {
-		position: absolute;
-		border: 2px solid rgba(255, 138, 0, 0.5);
-		background: rgba(255, 138, 0, 0.08);
-		backdrop-filter: blur(4px);
-	}
-
-	.element-1 {
-		width: 150px;
-		height: 150px;
-		top: -60px;
-		left: -60px;
-		animation: float1 8s ease-in-out infinite;
-	}
-
-	.element-1 .cube-face {
-		width: 150px;
-		height: 150px;
-	}
-
-	.element-1 .front  { transform: translateZ(75px); }
-	.element-1 .back   { transform: translateZ(-75px) rotateY(180deg); }
-	.element-1 .left   { transform: rotateY(-90deg) translateZ(75px); }
-	.element-1 .right  { transform: rotateY(90deg) translateZ(75px); }
-	.element-1 .top    { transform: rotateX(90deg) translateZ(75px); }
-	.element-1 .bottom { transform: rotateX(-90deg) translateZ(75px); }
-
-	.element-2 {
-		width: 110px;
-		height: 110px;
-		top: 120px;
-		right: -30px;
-		animation: float2 10s ease-in-out infinite;
-	}
-
-	.element-2 .cube-face {
-		width: 110px;
-		height: 110px;
-	}
-
-	.element-2 .front  { transform: translateZ(55px); }
-	.element-2 .back   { transform: translateZ(-55px) rotateY(180deg); }
-	.element-2 .left   { transform: rotateY(-90deg) translateZ(55px); }
-	.element-2 .right  { transform: rotateY(90deg) translateZ(55px); }
-	.element-2 .top    { transform: rotateX(90deg) translateZ(55px); }
-	.element-2 .bottom { transform: rotateX(-90deg) translateZ(55px); }
-
-	.element-3 {
-		width: 130px;
-		height: 130px;
-		bottom: -45px;
-		left: 120px;
-		animation: float3 9s ease-in-out infinite;
-	}
-
-	.element-3 .cube-face {
-		width: 130px;
-		height: 130px;
-	}
-
-	.element-3 .front  { transform: translateZ(65px); }
-	.element-3 .back   { transform: translateZ(-65px) rotateY(180deg); }
-	.element-3 .left   { transform: rotateY(-90deg) translateZ(65px); }
-	.element-3 .right  { transform: rotateY(90deg) translateZ(65px); }
-	.element-3 .top    { transform: rotateX(90deg) translateZ(65px); }
-	.element-3 .bottom { transform: rotateX(-90deg) translateZ(65px); }
-
-	@keyframes float1 {
-		0%, 100% {
-			transform: translate(0, 0) rotateX(25deg) rotateY(0deg) rotateZ(15deg);
-		}
-		50% {
-			transform: translate(10px, -20px) rotateX(25deg) rotateY(360deg) rotateZ(15deg);
-		}
-	}
-
-	@keyframes float2 {
-		0%, 100% {
-			transform: translate(0, 0) rotateX(-20deg) rotateY(0deg) rotateZ(-10deg);
-		}
-		50% {
-			transform: translate(-15px, 15px) rotateX(-20deg) rotateY(-360deg) rotateZ(-10deg);
-		}
-	}
-
-	@keyframes float3 {
-		0%, 100% {
-			transform: translate(0, 0) rotateX(35deg) rotateY(0deg) rotateZ(20deg);
-		}
-		50% {
-			transform: translate(20px, -10px) rotateX(35deg) rotateY(360deg) rotateZ(20deg);
-		}
-	}
-
-	/* Projects Section */
-	.projects-section {
-		padding: 8rem 0;
-		background:
-			repeating-linear-gradient(45deg, transparent, transparent 10px, rgba(255, 138, 0, 0.02) 10px, rgba(255, 138, 0, 0.02) 20px),
-			linear-gradient(180deg, #0a0a0a 0%, #000000 100%);
+	.mark {
+		width: 30px;
+		height: 30px;
+		border-radius: 8px;
+		background: var(--blue);
 		color: #fff;
-		border-top: 2px solid rgba(255, 138, 0, 0.2);
-		position: relative;
-	}
-
-	.section-title {
-		font-size: clamp(2.5rem, 7vw, 6rem);
-		font-weight: 800;
-		text-align: center;
-		margin: 0 0 4rem 0;
-		color: #fff;
-		font-family: 'IBM Plex Sans', sans-serif;
-		text-shadow: 0 0 60px rgba(255, 138, 0, 0.4);
-		letter-spacing: -0.03em;
-		line-height: 1;
-	}
-
-	.projects-grid {
 		display: grid;
-		grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-		gap: 2rem;
-		margin-top: 3rem;
+		place-items: center;
+		font-family: var(--mono);
+		font-size: 13px;
+		font-weight: 600;
+		box-shadow: 0 4px 12px rgba(47, 127, 196, 0.35);
+	}
+	.topnav {
+		display: flex;
+		align-items: center;
+		gap: 26px;
+		font-family: var(--mono);
+		font-size: 12.5px;
+	}
+	.topnav a {
+		color: var(--muted);
+		transition: color 0.18s;
+	}
+	.topnav a:hover {
+		color: var(--blue);
+	}
+	.topnav .ndot {
+		width: 4px;
+		height: 4px;
+		border-radius: 50%;
+		background: var(--line);
 	}
 
-	.project-card {
-		background: #0f0f0f;
-		border-radius: 0;
-		overflow: hidden;
-		border: 1px solid rgba(255, 138, 0, 0.2);
-		transition: all 0.4s ease;
+	/* hero */
+	.hero {
+		min-height: calc(100vh - 62px);
+		display: flex;
+		flex-direction: column;
+		align-items: center;
+		justify-content: center;
+		text-align: center;
+		padding: clamp(14px, 2.5vh, 30px) clamp(20px, 5vw, 64px) clamp(20px, 3vh, 40px);
 		position: relative;
+		overflow: hidden;
 	}
-
-	.project-card::before {
+	.hero::before {
 		content: '';
 		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		height: 3px;
-		background: linear-gradient(90deg, transparent, #ff8a00, transparent);
-		opacity: 0;
-		transition: opacity 0.4s ease;
+		inset: 0;
+		background:
+			radial-gradient(120% 90% at 50% 118%, rgba(75, 163, 227, 0.2), transparent 55%),
+			radial-gradient(80% 60% at 50% -10%, rgba(255, 255, 255, 0.9), transparent 60%),
+			linear-gradient(180deg, var(--bg-2), var(--bg));
+		z-index: 0;
 	}
-
-	.project-card:hover::before {
-		opacity: 1;
-	}
-
-	.project-card:hover {
-		transform: translateX(8px);
-		border-color: rgba(255, 138, 0, 0.6);
-		box-shadow: -8px 8px 0 rgba(255, 138, 0, 0.2), 0 0 40px rgba(255, 138, 0, 0.15);
-	}
-
-	.project-image {
+	.hero > * {
 		position: relative;
-		height: 200px;
-		overflow: hidden;
-		background: #000;
-		border-bottom: 1px solid rgba(255, 138, 0, 0.2);
+		z-index: 1;
+	}
+	.eyebrow {
+		font-family: var(--mono);
+		font-size: 13px;
+		letter-spacing: 0.02em;
+		color: var(--blue-deep);
+		margin: 0 0 18px;
+		display: inline-flex;
+		align-items: center;
+		gap: 9px;
+		padding: 7px 14px;
+		border: 1px solid var(--line);
+		border-radius: 100px;
+		background: rgba(255, 255, 255, 0.7);
+		box-shadow: 0 1px 2px rgba(22, 32, 43, 0.04);
+	}
+	.eyebrow .blip {
+		width: 7px;
+		height: 7px;
+		border-radius: 50%;
+		background: var(--blue-bright);
+		box-shadow: 0 0 0 4px rgba(75, 163, 227, 0.18);
+	}
+	.eyebrow b {
+		color: var(--blue-deep);
+		font-weight: 600;
+	}
+	.name {
+		font-size: clamp(2.7rem, 6vw, 4.6rem);
+		font-weight: 600;
+		line-height: 0.98;
+		letter-spacing: -0.035em;
+		margin: 0;
+	}
+	.name .grad {
+		background: linear-gradient(120deg, var(--blue-deep), var(--blue-bright));
+		-webkit-background-clip: text;
+		background-clip: text;
+		color: transparent;
+	}
+	.tagline {
+		font-size: clamp(1rem, 1.7vw, 1.22rem);
+		color: var(--muted);
+		max-width: 620px;
+		margin: 18px auto 0;
+		line-height: 1.55;
+	}
+	.tagline b {
+		color: var(--ink);
+		font-weight: 500;
+	}
+	.cta {
+		display: flex;
+		gap: 12px;
+		flex-wrap: wrap;
+		justify-content: center;
+		margin-top: 26px;
+	}
+	.btn {
+		display: inline-flex;
+		align-items: center;
+		gap: 9px;
+		font-family: var(--mono);
+		font-size: 13px;
+		font-weight: 500;
+		padding: 11px 18px;
+		border-radius: 11px;
+		border: 1px solid var(--line);
+		background: var(--surface);
+		color: var(--ink);
+		box-shadow: var(--shadow);
+		transition: transform 0.18s, box-shadow 0.18s, border-color 0.18s, color 0.18s;
+	}
+	.btn svg {
+		width: 17px;
+		height: 17px;
+	}
+	.btn:hover {
+		transform: translateY(-2px);
+		border-color: var(--blue-bright);
+		color: var(--blue-deep);
+		box-shadow: var(--shadow-lg);
+	}
+	.btn.primary {
+		background: var(--blue);
+		color: #fff;
+		border-color: var(--blue);
+		box-shadow: 0 6px 18px rgba(47, 127, 196, 0.4);
+	}
+	.btn.primary:hover {
+		background: var(--blue-deep);
+		color: #fff;
+		border-color: var(--blue-deep);
 	}
 
-	.project-image img {
+	.media {
+		display: flex;
+		flex-wrap: nowrap;
+		gap: clamp(14px, 2vw, 26px);
+		justify-content: center;
+		align-items: stretch;
+		margin-top: clamp(20px, 3.5vh, 36px);
+		width: 100%;
+	}
+	.frame {
+		position: relative;
+		border-radius: 16px;
+		background: var(--surface);
+		border: 1px solid var(--line);
+		box-shadow: var(--shadow-lg);
+		overflow: hidden;
+		height: clamp(196px, 33vh, 312px);
+	}
+	.frame .cap {
+		position: absolute;
+		top: 12px;
+		left: 12px;
+		z-index: 3;
+		font-family: var(--mono);
+		font-size: 10.5px;
+		font-weight: 500;
+		letter-spacing: 0.04em;
+		color: var(--blue-deep);
+		background: rgba(255, 255, 255, 0.86);
+		backdrop-filter: blur(4px);
+		border: 1px solid var(--line);
+		padding: 5px 11px;
+		border-radius: 100px;
+		display: inline-flex;
+		align-items: center;
+		gap: 7px;
+	}
+	.frame .cap .blip {
+		width: 6px;
+		height: 6px;
+		border-radius: 50%;
+		background: var(--blue-bright);
+	}
+	.frame.graph {
+		aspect-ratio: 1390 / 1018;
+	}
+	.frame.graph img {
 		width: 100%;
 		height: 100%;
-		object-fit: contain;
+		object-fit: cover;
+		object-position: top center;
+	}
+	.frame.video {
+		aspect-ratio: 16 / 9;
+		padding: 0;
+		background: #000;
+	}
+	.frame.video iframe {
+		width: 100%;
+		height: 100%;
+		border: 0;
+		display: block;
+	}
+	.scrollcue {
+		margin-top: clamp(16px, 3vh, 30px);
+		font-family: var(--mono);
+		font-size: 11px;
+		letter-spacing: 0.12em;
+		color: var(--muted);
+		text-transform: uppercase;
+		display: inline-flex;
+		flex-direction: column;
+		align-items: center;
+		gap: 7px;
+	}
+	.scrollcue .ln {
+		width: 1px;
+		height: 26px;
+		background: linear-gradient(var(--blue-bright), transparent);
+		animation: drop 1.8s ease-in-out infinite;
+	}
+	@keyframes drop {
+		0%, 100% { opacity: 0.3; transform: scaleY(0.6); }
+		50% { opacity: 1; transform: scaleY(1); }
+	}
+
+	/* work (dark) */
+	.work {
+		--ink: #eaf1f8;
+		--muted: #8c99a9;
+		--line: #243140;
+		--surface: #131c26;
+		--blue: #5bb0ee;
+		--blue-bright: #7ec5f5;
+		--blue-fill: rgba(91, 176, 238, 0.12);
+		background:
+			radial-gradient(90% 60% at 50% 0%, #122130 0%, transparent 60%),
+			#0d141c;
+		color: var(--ink);
+		padding: clamp(64px, 9vh, 120px) clamp(20px, 5vw, 64px) clamp(40px, 6vh, 70px);
+	}
+	.wrap {
+		max-width: 1180px;
+		margin: 0 auto;
+	}
+	.work-head {
+		display: flex;
+		align-items: baseline;
+		gap: 16px;
+		flex-wrap: wrap;
+		margin-bottom: clamp(30px, 5vh, 54px);
+	}
+	.work-head h2 {
+		font-size: clamp(2rem, 4.5vw, 3.2rem);
+		font-weight: 600;
+		letter-spacing: -0.03em;
+		margin: 0;
+		color: var(--ink);
+	}
+	.work-head .meta {
+		font-family: var(--mono);
+		font-size: 12.5px;
+		color: var(--muted);
+	}
+	.work-head .meta b {
+		color: var(--blue-bright);
+		font-weight: 500;
+	}
+	.grid {
+		display: grid;
+		grid-template-columns: repeat(12, 1fr);
+		gap: clamp(16px, 2vw, 24px);
+	}
+	.card {
+		grid-column: span 4;
+		background: var(--surface);
+		border: 1px solid var(--line);
+		border-radius: 16px;
+		overflow: hidden;
+		display: flex;
+		flex-direction: column;
+		transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+		position: relative;
+	}
+	.card:hover {
+		transform: translateY(-4px);
+		border-color: rgba(91, 176, 238, 0.55);
+		box-shadow: 0 24px 50px rgba(0, 0, 0, 0.45), 0 0 0 1px rgba(91, 176, 238, 0.25);
+	}
+	.card .shot {
+		aspect-ratio: 16 / 10;
+		background: #0a1018;
+		overflow: hidden;
+		border-bottom: 1px solid var(--line);
+	}
+	.card .shot img {
+		width: 100%;
+		height: 100%;
+		object-fit: cover;
+		object-position: top center;
 		transition: transform 0.4s ease;
 	}
-
-	.project-card:hover .project-image img {
-		transform: scale(1.1);
+	.card:hover .shot img {
+		transform: scale(1.045);
 	}
-
-	.project-overlay {
-		position: absolute;
-		top: 0;
-		left: 0;
-		right: 0;
-		bottom: 0;
-		background: rgba(0, 0, 0, 0.85);
+	.card .body {
+		padding: 20px 22px 22px;
 		display: flex;
-		align-items: center;
-		justify-content: center;
-		opacity: 0;
-		transition: opacity 0.3s ease;
+		flex-direction: column;
+		flex: 1;
 	}
-
-	.project-card:hover .project-overlay {
-		opacity: 1;
-	}
-
-	.project-link {
-		display: flex;
-		align-items: center;
-		justify-content: center;
-		width: 60px;
-		height: 60px;
-		background: #ff8a00;
-		border-radius: 0;
-		color: #000;
-		transition: all 0.3s ease;
-		text-decoration: none;
-		border: 2px solid #ff8a00;
-	}
-
-	.project-link:hover {
-		background: transparent;
-		color: #ff8a00;
-		transform: rotate(90deg) scale(1.1);
-	}
-
-	.project-link svg {
-		width: 24px;
-		height: 24px;
-	}
-
-	.project-content {
-		padding: 2rem;
-	}
-
-	.project-title {
-		font-size: 1.6rem;
-		font-weight: 700;
-		margin: 0 0 0.85rem 0;
-		color: #fff;
-		font-family: 'IBM Plex Sans', sans-serif;
-		letter-spacing: -0.02em;
-	}
-
-	.project-description {
-		font-size: 0.95rem;
-		line-height: 1.65;
-		color: #9a9a9a;
-		margin: 0 0 1.25rem 0;
-		font-weight: 300;
-	}
-
-	.project-tech {
-		display: flex;
-		flex-wrap: wrap;
-		gap: 0.5rem;
-	}
-
-	.tech-tag {
-		padding: 0.3rem 0.9rem;
-		background: transparent;
-		border: 1px solid rgba(255, 138, 0, 0.4);
-		border-radius: 0;
-		font-size: 0.75rem;
-		color: #ff8a00;
+	.card h3 {
+		font-size: 1.35rem;
 		font-weight: 600;
-		font-family: 'Fira Code', monospace;
-		text-transform: uppercase;
-		letter-spacing: 0.08em;
-		transition: all 0.3s ease;
-	}
-
-	.tech-tag:hover {
-		background: rgba(255, 138, 0, 0.1);
-		border-color: #ff8a00;
-	}
-
-	/* Footer */
-	.footer {
-		padding: 3rem 0;
-		text-align: center;
-		border-top: 2px solid rgba(255, 138, 0, 0.2);
-		background: #000;
-		color: #666;
-	}
-
-	.footer p {
+		letter-spacing: -0.02em;
 		margin: 0;
-		color: #666;
-		font-size: 0.85rem;
-		font-family: 'Fira Code', monospace;
-		letter-spacing: 0.05em;
+	}
+	.card p {
+		font-size: 0.92rem;
+		line-height: 1.55;
+		color: var(--muted);
+		margin: 9px 0 16px;
+		flex: 1;
+	}
+	.tags {
+		display: flex;
+		gap: 7px;
+		flex-wrap: wrap;
+	}
+	.tag {
+		font-family: var(--mono);
+		font-size: 10.5px;
+		font-weight: 500;
+		letter-spacing: 0.03em;
+		color: var(--blue-bright);
+		border: 1px solid rgba(91, 176, 238, 0.3);
+		background: var(--blue-fill);
+		padding: 4px 9px;
+		border-radius: 7px;
+	}
+	.card .go {
+		position: absolute;
+		top: 14px;
+		right: 14px;
+		z-index: 2;
+		width: 34px;
+		height: 34px;
+		border-radius: 9px;
+		background: rgba(13, 20, 28, 0.7);
+		backdrop-filter: blur(6px);
+		border: 1px solid var(--line);
+		display: grid;
+		place-items: center;
+		opacity: 0;
+		transform: translateY(-4px);
+		transition: opacity 0.25s, transform 0.25s, background 0.25s;
+	}
+	.card .go svg {
+		width: 16px;
+		height: 16px;
+		stroke: var(--blue-bright);
+	}
+	.card:hover .go {
+		opacity: 1;
+		transform: translateY(0);
+	}
+	.card.featured {
+		grid-column: span 8;
+		flex-direction: row;
+	}
+	.card.featured .shot {
+		aspect-ratio: auto;
+		flex: 1.15;
+		border-bottom: none;
+		border-right: 1px solid var(--line);
+		min-height: 280px;
+		background: #e0dfda;
+	}
+	.card.featured .shot img {
+		object-fit: contain;
+		object-position: center;
 	}
 
-	/* Responsive Design */
-	@media (max-width: 768px) {
-		.hero-content {
-			grid-template-columns: 1fr;
-			gap: 1rem;
-			text-align: center;
-		}
+	.card .shot img {
+		object-fit: contain;
+		object-position: center;
+	}
+	.card.featured .body {
+		flex: 1;
+		justify-content: center;
+		padding: clamp(24px, 3vw, 38px);
+	}
+	.card.featured h3 {
+		font-size: clamp(1.7rem, 2.4vw, 2.3rem);
+	}
+	.card.featured p {
+		font-size: 1rem;
+		flex: 0;
+		margin-bottom: 20px;
+	}
+	.ribbon {
+		align-self: flex-start;
+		font-family: var(--mono);
+		font-size: 10.5px;
+		font-weight: 600;
+		letter-spacing: 0.08em;
+		color: #052238;
+		background: var(--blue-bright);
+		padding: 5px 11px;
+		border-radius: 7px;
+		margin-bottom: 16px;
+	}
+	.card.spotlight {
+		grid-column: span 4;
+	}
 
+	/* contact / footer */
+	.contact {
+		--ink: #eaf1f8;
+		--muted: #8c99a9;
+		--line: #243140;
+		background: #0d141c;
+		padding: clamp(48px, 8vh, 96px) clamp(20px, 5vw, 64px) 0;
+	}
+	.contact-inner {
+		max-width: 1180px;
+		margin: 0 auto;
+		border: 1px solid #243140;
+		border-radius: 22px;
+		background:
+			radial-gradient(80% 140% at 100% 0%, rgba(91, 176, 238, 0.16), transparent 55%),
+			#111b25;
+		padding: clamp(34px, 5vw, 60px);
+		display: flex;
+		align-items: center;
+		justify-content: space-between;
+		gap: 30px;
+		flex-wrap: wrap;
+	}
+	.contact-inner h2 {
+		font-size: clamp(1.8rem, 3.5vw, 2.8rem);
+		font-weight: 600;
+		letter-spacing: -0.03em;
+		margin: 0;
+		color: #eaf1f8;
+	}
+	.contact-inner p {
+		color: #8c99a9;
+		margin: 12px 0 0;
+		font-size: 1.02rem;
+		max-width: 440px;
+		line-height: 1.55;
+	}
+	.contact-cta {
+		display: flex;
+		gap: 12px;
+		flex-wrap: wrap;
+	}
+	.btn.email {
+		background: #5bb0ee;
+		color: #052238;
+		border: 1px solid #5bb0ee;
+		font-weight: 600;
+		box-shadow: 0 8px 24px rgba(91, 176, 238, 0.3);
+	}
+	.btn.email:hover {
+		background: #7ec5f5;
+		color: #052238;
+		transform: translateY(-2px);
+	}
+	.btn.ghost {
+		background: transparent;
+		color: #cfe0ee;
+		border: 1px solid #2c3c4e;
+		box-shadow: none;
+	}
+	.btn.ghost:hover {
+		border-color: #5bb0ee;
+		color: #fff;
+	}
+	footer {
+		background: #0d141c;
+		color: #5d6b7a;
+		padding: 40px clamp(20px, 5vw, 64px) 44px;
+	}
+	.foot-inner {
+		max-width: 1180px;
+		margin: 0 auto;
+		display: flex;
+		justify-content: space-between;
+		align-items: center;
+		gap: 16px;
+		flex-wrap: wrap;
+		border-top: 1px solid #1c2733;
+		padding-top: 28px;
+		font-family: var(--mono);
+		font-size: 12px;
+	}
+	.foot-inner a {
+		color: #8c99a9;
+	}
+	.foot-inner a:hover {
+		color: #5bb0ee;
+	}
+	.foot-links {
+		display: flex;
+		gap: 22px;
+	}
+
+	@media (max-width: 880px) {
+		.card {
+			grid-column: span 6;
+		}
+		.card.featured {
+			grid-column: span 12;
+		}
+		.card.spotlight {
+			grid-column: span 6;
+		}
+	}
+	@media (max-width: 640px) {
 		.hero {
-			min-height: auto;
-			padding: 2rem 0;
+			min-height: 0;
+			padding-top: 30px;
+			padding-bottom: 50px;
 		}
-
-		.name {
-			font-size: clamp(3rem, 10vw, 4.5rem);
-			margin: 0 0 0.5rem 0;
-		}
-
-		.title {
-			margin: 0 0 1rem 0;
-		}
-
-		.intro {
-			margin: 0 auto 1.5rem auto;
-			font-size: clamp(1rem, 4vw, 1.15rem);
-		}
-
-		.hero-visual {
-			height: 280px;
-			margin-top: 0;
-		}
-
-		.floating-elements {
-			width: 250px;
-			height: 250px;
-			margin-top: 0;
-		}
-
-		.element-1 {
-			width: 100px;
-			height: 100px;
-			top: -30px;
-			left: -30px;
-		}
-
-		.element-1 .cube-face {
-			width: 100px;
-			height: 100px;
-		}
-
-		.element-1 .front  { transform: translateZ(50px); }
-		.element-1 .back   { transform: translateZ(-50px) rotateY(180deg); }
-		.element-1 .left   { transform: rotateY(-90deg) translateZ(50px); }
-		.element-1 .right  { transform: rotateY(90deg) translateZ(50px); }
-		.element-1 .top    { transform: rotateX(90deg) translateZ(50px); }
-		.element-1 .bottom { transform: rotateX(-90deg) translateZ(50px); }
-
-		.element-2 {
-			width: 70px;
-			height: 70px;
-			top: 60px;
-			right: -15px;
-		}
-
-		.element-2 .cube-face {
-			width: 70px;
-			height: 70px;
-		}
-
-		.element-2 .front  { transform: translateZ(35px); }
-		.element-2 .back   { transform: translateZ(-35px) rotateY(180deg); }
-		.element-2 .left   { transform: rotateY(-90deg) translateZ(35px); }
-		.element-2 .right  { transform: rotateY(90deg) translateZ(35px); }
-		.element-2 .top    { transform: rotateX(90deg) translateZ(35px); }
-		.element-2 .bottom { transform: rotateX(-90deg) translateZ(35px); }
-
-		.element-3 {
-			width: 85px;
-			height: 85px;
-			bottom: -20px;
-			left: 60px;
-		}
-
-		.element-3 .cube-face {
-			width: 85px;
-			height: 85px;
-		}
-
-		.element-3 .front  { transform: translateZ(42.5px); }
-		.element-3 .back   { transform: translateZ(-42.5px) rotateY(180deg); }
-		.element-3 .left   { transform: rotateY(-90deg) translateZ(42.5px); }
-		.element-3 .right  { transform: rotateY(90deg) translateZ(42.5px); }
-		.element-3 .top    { transform: rotateX(90deg) translateZ(42.5px); }
-		.element-3 .bottom { transform: rotateX(-90deg) translateZ(42.5px); }
-
-		.projects-grid {
-			grid-template-columns: 1fr;
-		}
-
-		.social-links {
-			justify-content: center;
+		.media {
 			flex-wrap: wrap;
 		}
-
-		.container {
-			padding: 0 1rem;
+		.card,
+		.card.spotlight {
+			grid-column: span 12;
 		}
-
-		.hero-content {
-			padding: 1rem 1.5rem;
+		.card.featured {
+			flex-direction: column;
 		}
-	}
-
-	@media (max-width: 480px) {
-		.hero {
-			padding: 1.5rem 0;
+		.card.featured .shot {
+			border-right: none;
+			border-bottom: 1px solid var(--line);
+			min-height: 0;
+			aspect-ratio: 16 / 10;
 		}
-
-		.name {
-			font-size: clamp(2.5rem, 12vw, 3.5rem);
+		.topnav .hide {
+			display: none;
 		}
-
-		.projects-section {
-			padding: 4rem 0;
+		.frame {
+			height: auto;
+			width: 100%;
+			max-width: 520px;
 		}
-
-		.section-title {
-			font-size: clamp(2rem, 10vw, 3rem);
-		}
-
-		.project-card {
-			margin: 0 0.5rem;
-		}
-
-		.hero-visual {
-			height: 240px;
-		}
-
-		.floating-elements {
-			width: 200px;
-			height: 200px;
+		.frame.graph,
+		.frame.video {
+			aspect-ratio: 16 / 10;
 		}
 	}
 </style>
