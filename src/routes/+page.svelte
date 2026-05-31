@@ -40,7 +40,7 @@
 			desc: 'AI-powered comment generation and conversation enhancement.',
 			image: '/theforum.png',
 			link: 'https://github.com/flooyd/forum',
-			tech: ['AI', 'React', 'Node.js']
+			tech: ['AI', 'Community', 'Node.js']
 		},
 		{
 			title: 'Mango',
@@ -54,14 +54,14 @@
 			desc: 'Team finding and matchmaking for Dota 2 players.',
 			image: 'https://github.com/flooyd/dota2lfg/raw/master/readme%20images/dota2lfg.PNG',
 			link: 'https://github.com/flooyd/dota2lfg',
-			tech: ['Gaming', 'Community', 'Node.js']
+			tech: ['React', 'Gaming', 'Node.js']
 		},
 		{
 			title: 'Curiosity & Friends',
 			desc: 'Mars rover photo browser built on the NASA API.',
 			image: 'https://github.com/flooyd/Curiosity-and-Friends/raw/master/images/caf.PNG?raw=true',
 			link: 'https://flooyd.github.io/Curiosity-and-Friends/',
-			tech: ['NASA API', 'Space', 'Vue.js']
+			tech: ['NASA API', 'Space', 'jQuery']
 		},
 		{
 			title: 'TD Map Editor',
