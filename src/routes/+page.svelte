@@ -38,7 +38,7 @@
 		{
 			title: 'The Forum',
 			desc: 'AI-powered comment generation and conversation enhancement.',
-			image: 'https://i.imgur.com/IjCixfJ.png,
+			image: 'https://i.imgur.com/IjCixfJ.png',
 			link: 'https://github.com/flooyd/forum',
 			tech: ['AI', 'Community', 'Node.js']
 		},
