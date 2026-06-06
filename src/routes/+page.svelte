@@ -45,7 +45,7 @@
 		{
 			title: 'Mango',
 			desc: 'Advanced Dota 2 replay analysis and navigation tool.',
-			image: 'https://raw.githubusercontent.com/flooyd/mango/refs/heads/master/client/public/Mango.PNG',
+			image: 'https://i.imgur.com/YHHAuUY.png',
 			link: 'https://github.com/flooyd/mango',
 			tech: ['React', 'Data Viz', 'Gaming']
 		},
