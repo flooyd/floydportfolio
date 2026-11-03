@@ -13,11 +13,18 @@
 
 	const projects = [
 		{
-			title: 'finTrack',
+			title: 'Book Builder',
 			featured: true,
+			desc: 'A free, open-source workshop for novelists — plan on a corkboard, write in an editor set like the finished page, and keep every character, place and magic system one @ away.',
+			image: '/bookbuilder.png',
+			link: 'https://book-builder-nine.vercel.app',
+			tech: ['SvelteKit', 'Postgres', 'Tiptap']
+		},
+		{
+			title: 'finTrack',
 			desc: 'A money tracker that gets out of your way — log income and expenses in one keystroke and watch your net worth climb in real time.',
 			image: '/networth.png',
-			link: "https://project-r11eo.vercel.app",
+			link: 'https://project-r11eo.vercel.app',
 			tech: ['SvelteKit', 'Charts', 'Finance']
 		},
 		{
@@ -119,9 +126,12 @@
 			</div>
 
 			<div class="media">
-				<div class="frame graph">
-					<span class="cap"><span class="blip"></span>finTrack — net worth</span>
-					<img src="/networth.png" alt="finTrack net worth graph showing $48,210 climbing over a year" />
+				<div class="frame still">
+					<span class="cap"><span class="blip"></span>Book Builder — the editor</span>
+					<img
+						src="/bookbuilder.png"
+						alt="Book Builder's editor: a chapter on a paper page with a large drop cap, and a card for the character Juno Halley open over a mention of her name"
+					/>
 				</div>
 				<div class="frame video">
 					<span class="cap"><span class="blip"></span>Mango in action</span>
@@ -460,10 +470,10 @@
 		border-radius: 50%;
 		background: var(--blue-bright);
 	}
-	.frame.graph {
+	.frame.still {
 		aspect-ratio: 1390 / 1018;
 	}
-	.frame.graph img {
+	.frame.still img {
 		width: 100%;
 		height: 100%;
 		object-fit: cover;
@@ -653,7 +663,8 @@
 		border-bottom: none;
 		border-right: 1px solid var(--line);
 		min-height: 280px;
-		background: #e0dfda;
+		/* Book Builder's night blue, so any space around the picture looks like part of it. */
+		background: #0a0f24;
 	}
 	.card.featured .shot img {
 		object-fit: contain;
@@ -827,7 +838,7 @@
 			width: 100%;
 			max-width: 520px;
 		}
-		.frame.graph,
+		.frame.still,
 		.frame.video {
 			aspect-ratio: 16 / 10;
 		}
