@@ -207,5 +207,7 @@ export const skills = [
 export const contact = {
 	email: 'floydtjones@gmail.com',
 	linkedin: 'https://linkedin.com/in/flooyd',
-	github: 'https://github.com/flooyd'
+	github: 'https://github.com/flooyd',
+	// The PDF in static/.
+	resume: '/Floyd_Jones_Resume.pdf'
 };

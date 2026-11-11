@@ -1,5 +1,5 @@
 <script>
-	import { roles, skills } from '$lib/data/projects.js';
+	import { contact, roles, skills } from '$lib/data/projects.js';
 </script>
 
 <section class="about wrap" id="about">
@@ -29,6 +29,13 @@
 						</li>
 					{/each}
 				</ul>
+				<motion-press class="about__resume" scale="0.96">
+					<a class="btn btn--ghost" href={contact.resume} target="_blank" rel="noopener"
+						>Resume (PDF)<svg viewBox="0 0 24 24" aria-hidden="true"
+							><path d="M12 5v14M6 13l6 6 6-6"></path></svg
+						></a
+					>
+				</motion-press>
 			</div>
 			<div class="tile about__tile skills">
 				<span class="label label--section"
@@ -108,6 +115,10 @@
 		font-family: var(--font-mono);
 		font-size: 11px;
 		color: var(--accent);
+	}
+	/* Keep the press wrapper to the button's width instead of the tile's. */
+	.about__resume {
+		align-self: flex-start;
 	}
 	.skills {
 		gap: 8px;
