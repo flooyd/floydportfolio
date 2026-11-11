@@ -1,0 +1,80 @@
+/*
+  Design tokens for the Workbench portfolio.
+  Drop-in: copy to src/lib/styles/tokens.css and import once from the root layout.
+  Theme is selected by data-theme="light" | "dark" on <html>.
+*/
+
+:root {
+	/* Type. The "Variable" names are what Fontsource registers; the plain names
+     are what Google Fonts registers. Keep both so either loading method works. */
+	--font-sans: 'Bricolage Grotesque Variable', 'Bricolage Grotesque', 'Trebuchet MS',
+		'Helvetica Neue', sans-serif;
+	--font-mono: 'Martian Mono Variable', 'Martian Mono', ui-monospace, 'SF Mono', Menlo, monospace;
+
+	/* Shape */
+	--radius-tile: 12px;
+	--radius-media: 8px;
+	--radius-ctl: 8px;
+	--radius-chip: 4px;
+
+	/* Layout */
+	--page-max: 1440px;
+	--gutter: 40px;
+	--gap: 16px;
+
+	/* Motion */
+	--ease-out: cubic-bezier(0.2, 0.8, 0.2, 1);
+
+	/* Fixed colors used on the solid-blue contact tile in both themes */
+	--on-accent-soft: #eef3ff;
+	--on-accent-line: #c4d3f8;
+}
+
+/* Light: the resume's paper, ink and blue. */
+:root,
+[data-theme='light'] {
+	color-scheme: light;
+	--bg: #f4f6fb;
+	--grid: #e4e8f0;
+	--tile: #ffffff;
+	--tile-2: #f0f4fc;
+	--line: #e1e5ec;
+	--line-strong: #c9cfda;
+	--ink: #16181d;
+	--muted: #5b6472;
+	--accent: #2257d6;
+	--accent-fill: #2257d6;
+	--on-accent: #ffffff;
+	--chip-bg: #f0f4fc;
+	--chip-ink: #2257d6;
+	--pulse: rgba(34, 87, 214, 0.35);
+	--inv-bg: #16181d;
+	--inv-ink: #ffffff;
+	--inv-muted: #a9b2c3;
+	--inv-accent: #8fb0ff;
+	--shadow: 0 1px 2px rgba(22, 24, 29, 0.04), 0 10px 28px rgba(22, 24, 29, 0.06);
+}
+
+/* Dark: built out from the resume's black "Portfolio" card (#16181D). */
+[data-theme='dark'] {
+	color-scheme: dark;
+	--bg: #0d0f13;
+	--grid: #1d2129;
+	--tile: #16181d;
+	--tile-2: #1c2029;
+	--line: #272b34;
+	--line-strong: #3a404c;
+	--ink: #f2f4f8;
+	--muted: #a3abba;
+	--accent: #8fb0ff;
+	--accent-fill: #2e63e6;
+	--on-accent: #ffffff;
+	--chip-bg: #1b2338;
+	--chip-ink: #a9c2ff;
+	--pulse: rgba(143, 176, 255, 0.35);
+	--inv-bg: #f2f4f8;
+	--inv-ink: #16181d;
+	--inv-muted: #5b6472;
+	--inv-accent: #2257d6;
+	--shadow: none;
+}

@@ -1,0 +1,390 @@
+/*
+  Global styles for the Workbench portfolio: base rules, the pieces shared by
+  more than one component, keyframes, and the responsive overrides for those
+  shared pieces. Section-specific rules (and their breakpoints) live in each
+  component's <style>. Tokens live in tokens.css.
+*/
+
+/* ---------- Base ---------- */
+*,
+*::before,
+*::after {
+	box-sizing: border-box;
+}
+html {
+	scroll-behavior: smooth;
+}
+body {
+	margin: 0;
+	background: var(--bg);
+	color: var(--ink);
+	font-family: var(--font-sans);
+	font-size: 17px;
+	line-height: 1.5;
+	-webkit-font-smoothing: antialiased;
+	text-rendering: optimizeLegibility;
+}
+a {
+	color: inherit;
+}
+img {
+	display: block;
+	max-width: 100%;
+}
+h1,
+h2,
+h3,
+p {
+	margin: 0;
+}
+
+.page {
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	/* Graph-paper dots: the only background texture on the site. */
+	background-image: radial-gradient(var(--grid) 1px, transparent 1px);
+	background-size: 22px 22px;
+}
+.wrap {
+	width: 100%;
+	max-width: var(--page-max);
+	margin-inline: auto;
+	padding-inline: var(--gutter);
+}
+
+:focus-visible {
+	outline: 2px solid var(--accent);
+	outline-offset: 3px;
+}
+
+.skip {
+	position: absolute;
+	left: 16px;
+	top: -60px;
+	z-index: 10;
+	padding: 12px 16px;
+	border-radius: var(--radius-ctl);
+	background: var(--accent-fill);
+	color: var(--on-accent);
+	font-family: var(--font-mono);
+	font-size: 12px;
+	text-decoration: none;
+}
+.skip:focus {
+	top: 16px;
+}
+
+/* ---------- Shared pieces ---------- */
+.label {
+	font-family: var(--font-mono);
+	font-size: 11px;
+	letter-spacing: 0.12em;
+	text-transform: uppercase;
+	color: var(--muted);
+}
+.label--section {
+	font-size: 12px;
+}
+.label--accent {
+	color: var(--accent);
+}
+.slashes {
+	color: var(--accent);
+	font-weight: 600;
+}
+
+.tile {
+	border-radius: var(--radius-tile);
+	background: var(--tile);
+	border: 1px solid var(--line);
+	box-shadow: var(--shadow);
+}
+.tile--inverse {
+	background: var(--inv-bg);
+	color: var(--inv-ink);
+	border-color: transparent;
+	box-shadow: none;
+}
+.tile--flag {
+	border-color: var(--accent);
+}
+
+.chips {
+	display: flex;
+	flex-wrap: wrap;
+	gap: 6px;
+	font-family: var(--font-mono);
+	font-size: 11px;
+}
+.chips--lg {
+	gap: 8px;
+}
+.chip {
+	padding: 5px 9px;
+	border-radius: var(--radius-chip);
+	background: var(--chip-bg);
+	color: var(--chip-ink);
+	font-family: var(--font-mono);
+	font-size: 11px;
+}
+.chips--lg .chip {
+	padding: 6px 10px;
+}
+
+.btn {
+	display: inline-flex;
+	align-items: center;
+	gap: 10px;
+	min-height: 52px;
+	padding: 0 24px;
+	border-radius: var(--radius-ctl);
+	border: 1px solid transparent;
+	font-family: var(--font-sans);
+	font-size: 16px;
+	font-weight: 700;
+	text-decoration: none;
+	cursor: pointer;
+	transition:
+		transform 0.18s ease,
+		filter 0.18s ease,
+		border-color 0.18s ease;
+}
+.btn:hover {
+	transform: translateY(-1px);
+	filter: brightness(1.08);
+}
+.btn--primary {
+	background: var(--accent-fill);
+	color: var(--on-accent);
+}
+.btn--ghost {
+	background: var(--tile);
+	color: var(--ink);
+	border-color: var(--line-strong);
+	font-weight: 500;
+}
+.btn--ghost:hover {
+	border-color: var(--accent);
+}
+.btn--sm {
+	min-height: 44px;
+	padding: 0 18px;
+	font-family: var(--font-mono);
+	font-size: 12px;
+	font-weight: 400;
+}
+.btn svg {
+	width: 16px;
+	height: 16px;
+	fill: none;
+	stroke: currentColor;
+	stroke-width: 2.2;
+	stroke-linecap: round;
+	stroke-linejoin: round;
+}
+
+.dot {
+	flex: none;
+	width: 8px;
+	height: 8px;
+	border-radius: 50%;
+	background: var(--accent);
+	animation: pulse 2s ease-out infinite;
+}
+.dot--sm {
+	width: 7px;
+	height: 7px;
+}
+.arrow {
+	color: var(--accent);
+}
+
+/* Section headings (Work, Approach) */
+.h2 {
+	font-weight: 800;
+	font-size: 64px;
+	line-height: 1;
+	letter-spacing: -0.035em;
+}
+.h2--fluid {
+	font-size: clamp(40px, 4.4vw, 64px);
+	text-wrap: balance;
+}
+
+/* Small hero tiles (Motion study, Now) */
+.mini {
+	min-height: 196px;
+	padding: 22px 24px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-between;
+	gap: 12px;
+}
+.mini__note {
+	font-family: var(--font-mono);
+	font-size: 11px;
+	color: var(--muted);
+	text-wrap: balance;
+}
+
+/* ---------- Media ---------- */
+.shot {
+	display: block;
+	border-radius: var(--radius-media);
+	overflow: hidden;
+	border: 1px solid var(--line);
+	background: var(--tile-2);
+}
+/* Each image sets its own crop focus with an inline --pos custom property. */
+.shot img {
+	width: 100%;
+	height: 100%;
+	object-fit: cover;
+	object-position: var(--pos, center);
+	transition: transform 0.5s var(--ease-out);
+}
+.shot--placeholder {
+	display: flex;
+	align-items: center;
+	justify-content: center;
+	border-style: dashed;
+	border-color: var(--line-strong);
+	font-family: var(--font-mono);
+	font-size: 11px;
+	color: var(--muted);
+}
+
+/* ---------- motion-components ---------- */
+/* Give the elements their final display before they are defined, so nothing shifts on upgrade. */
+motion-reveal,
+motion-headline {
+	display: block;
+}
+motion-stagger {
+	display: contents;
+}
+/* Wrappers around buttons take the button's own box. */
+motion-press,
+motion-magnetic {
+	display: inline-flex;
+}
+/* Hide what is about to animate in until the elements are defined. This is the library's
+   preload.css, limited to visitors who run scripts (app.html adds .js to <html>, and the layout
+   removes it if the motion chunk fails) and who have not asked for reduced motion. */
+@media (prefers-reduced-motion: no-preference) {
+	.js motion-reveal:not(:defined),
+	.js motion-headline:not(:defined),
+	.js motion-stagger:not(:defined) > * {
+		opacity: 0;
+	}
+}
+/* motion-headline slides each word up inside a mask the height of one line. The headings here
+   are set tighter than the type's own height, so widen the mask (without moving anything) to
+   keep descenders and letter overhang from being clipped. */
+motion-headline > span[aria-hidden] {
+	padding: 0 0.06em 0.08em;
+	margin: 0 -0.06em -0.08em;
+}
+
+/* On paper nothing scrolls into view, so show everything the reveals were still holding back. */
+@media print {
+	motion-reveal,
+	motion-stagger > *,
+	motion-headline [data-unit] {
+		opacity: 1 !important;
+		transform: none !important;
+	}
+}
+
+/* ---------- Motion ---------- */
+@keyframes blink {
+	0%,
+	100% {
+		opacity: 1;
+	}
+	50% {
+		opacity: 0;
+	}
+}
+@keyframes pulse {
+	0% {
+		box-shadow: 0 0 0 0 var(--pulse);
+	}
+	70% {
+		box-shadow: 0 0 0 7px transparent;
+	}
+	100% {
+		box-shadow: 0 0 0 0 transparent;
+	}
+}
+@keyframes reveal {
+	from {
+		clip-path: inset(0 100% 0 0);
+	}
+	to {
+		clip-path: inset(0 0 0 0);
+	}
+}
+/* Motion study: the blue row's value grows, then it re-ranks to the top. */
+@keyframes rerank-hero {
+	0%,
+	8% {
+		transform: translateY(0) scaleX(0.45);
+	}
+	22% {
+		transform: translateY(0) scaleX(1);
+	}
+	36%,
+	66% {
+		transform: translateY(-60px) scaleX(1);
+	}
+	80% {
+		transform: translateY(-60px) scaleX(0.45);
+	}
+	92%,
+	100% {
+		transform: translateY(0) scaleX(0.45);
+	}
+}
+@keyframes rerank-others {
+	0%,
+	22% {
+		transform: translateY(0);
+	}
+	36%,
+	80% {
+		transform: translateY(30px);
+	}
+	92%,
+	100% {
+		transform: translateY(0);
+	}
+}
+@media (prefers-reduced-motion: reduce) {
+	html {
+		scroll-behavior: auto;
+	}
+	*,
+	*::before,
+	*::after {
+		animation: none !important;
+		transition: none !important;
+	}
+}
+
+/* ---------- Responsive (shared pieces only) ---------- */
+@media (max-width: 640px) {
+	:root {
+		--gutter: 20px;
+	}
+	.h2 {
+		font-size: 48px;
+	}
+}
+@media (max-width: 520px) {
+	.mini {
+		min-height: 0;
+		gap: 20px;
+	}
+}
