@@ -47,7 +47,12 @@
 			if (el) spy.observe(el);
 		}
 		// The links move when the bar wraps or the fonts load.
-		const resize = new ResizeObserver(placeMarker);
+		// The links move, and the header changes height, when the bar wraps, the fonts load or
+		// the text is zoomed. Publish the height so anchor links stop just below the header.
+		const resize = new ResizeObserver(() => {
+			placeMarker();
+			document.documentElement.style.setProperty('--header-h', bar.offsetHeight + 'px');
+		});
 		resize.observe(bar);
 		return () => {
 			spy.disconnect();
@@ -74,7 +79,7 @@
 			</nav>
 			<div class="site-actions">
 				<ThemeToggle />
-				<motion-press class="site-actions__resume" scale="0.96">
+				<motion-press scale="0.96">
 					<a class="btn btn--ghost btn--sm" href={contact.resume} target="_blank" rel="noopener"
 						>Resume</a
 					>
@@ -175,13 +180,9 @@
 		gap: 8px;
 	}
 
-	/* Below this the bar has no room for a third control; the resume is still in About. */
+	/* Below this the links, three controls and the name don't fit on one row, so the links
+	   drop to a row of their own under the name and controls. */
 	@media (max-width: 900px) {
-		.site-actions__resume {
-			display: none;
-		}
-	}
-	@media (max-width: 640px) {
 		.site-nav {
 			order: 3;
 			width: 100%;

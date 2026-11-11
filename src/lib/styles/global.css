@@ -13,8 +13,10 @@
 }
 html {
 	scroll-behavior: smooth;
-	/* Anchor links stop below the sticky header (see the 640px rule at the end for phones). */
-	scroll-padding-top: 76px;
+	/* Anchor links stop just below the sticky header. SiteHeader sets --header-h to the
+	   header's measured height; the values below cover the moment before it runs. */
+	--header-h: 72px;
+	scroll-padding-top: calc(var(--header-h) + 4px);
 }
 body {
 	margin: 0;
@@ -380,12 +382,14 @@ motion-headline > span[aria-hidden] {
 	:root {
 		--gutter: 20px;
 	}
-	/* The header is two rows tall here. */
-	html {
-		scroll-padding-top: 104px;
-	}
 	.h2 {
 		font-size: 48px;
+	}
+}
+/* The header's links wrap onto a second row here (see SiteHeader). */
+@media (max-width: 900px) {
+	html {
+		--header-h: 98px;
 	}
 }
 /* The header is not pinned on very narrow or very short screens (see SiteHeader). */
