@@ -49,72 +49,72 @@
 
 <style>
 	.contact {
-		padding-top: 40px;
-		padding-bottom: 24px;
+		padding-top: 2.5rem;
+		padding-bottom: 1.5rem;
 	}
 	.contact__tile {
-		padding: 56px;
+		padding: 3.5rem;
 		border-radius: var(--radius-tile);
 		background: var(--accent-fill);
 		color: var(--on-accent);
 		display: flex;
 		flex-wrap: wrap;
-		gap: 40px;
+		gap: 2.5rem;
 		align-items: flex-end;
 		justify-content: space-between;
 	}
 	.contact__copy {
-		flex: 1 1 520px;
+		flex: 1 1 32.5rem;
 		display: flex;
 		flex-direction: column;
-		gap: 20px;
+		gap: 1.25rem;
 	}
 	.contact__copy .label {
 		color: var(--on-accent-soft);
 	}
 	.contact__title {
 		font-weight: 800;
-		font-size: clamp(40px, 5vw, 72px);
+		font-size: clamp(2.5rem, 5vw, 4.5rem);
 		line-height: 0.98;
 		letter-spacing: -0.035em;
 		text-wrap: balance;
 	}
 	.contact__text {
-		max-width: 520px;
-		font-size: 19px;
+		max-width: 32.5rem;
+		font-size: 1.1875rem;
 		color: var(--on-accent-soft);
 	}
 	.contact__links {
 		display: flex;
-		gap: 12px;
+		gap: 0.75rem;
 		flex-wrap: wrap;
 	}
 	.btn--on-accent {
 		background: #ffffff;
 		color: #16181d;
-		padding: 0 26px;
+		padding: 0 1.625rem;
 	}
 	.btn--on-accent-ghost {
 		border-color: var(--on-accent-line);
 		color: #ffffff;
 		font-weight: 500;
-		padding: 0 22px;
+		padding: 0 1.375rem;
 	}
 	.site-foot {
-		margin-top: 20px;
+		margin-top: 1.25rem;
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
-		gap: 8px 16px;
+		gap: 0.5rem 1rem;
 		flex-wrap: wrap;
 		font-family: var(--font-mono);
-		font-size: 11px;
+		font-size: 0.6875rem;
 		color: var(--muted);
 	}
 	.site-foot a {
 		display: inline-flex;
 		align-items: center;
-		min-height: 44px;
+		min-height: 2.75rem;
 		text-decoration: none;
 		transition: color 0.18s ease;
 	}
@@ -124,7 +124,7 @@
 
 	@media (max-width: 640px) {
 		.contact__tile {
-			padding: 32px 24px;
+			padding: 2rem 1.5rem;
 		}
 		/* Full-width buttons: the motion wrappers stretch, and each button fills its wrapper. */
 		.contact__links motion-magnetic,

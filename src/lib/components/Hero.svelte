@@ -103,8 +103,8 @@
 
 <style>
 	.hero {
-		padding-top: 16px;
-		padding-bottom: 24px;
+		padding-top: 1rem;
+		padding-bottom: 1.5rem;
 		display: flex;
 		flex-direction: column;
 		gap: var(--gap);
@@ -119,19 +119,19 @@
 	}
 
 	.hero__lead {
-		min-height: 558px;
-		padding: 40px;
+		min-height: 34.875rem;
+		padding: 2.5rem;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		gap: 20px;
+		gap: 1.25rem;
 	}
 	.hero__eyebrow {
 		display: flex;
 		align-items: flex-start;
-		gap: 10px;
+		gap: 0.625rem;
 		font-family: var(--font-mono);
-		font-size: 12px;
+		font-size: 0.75rem;
 		color: var(--muted);
 	}
 	.hero__eyebrow strong {
@@ -143,7 +143,7 @@
 	}
 	.hero__title {
 		font-weight: 800;
-		font-size: clamp(44px, 5.8vw, 84px);
+		font-size: clamp(2.75rem, 5.8vw, 5.25rem);
 		line-height: 0.95;
 		letter-spacing: -0.035em;
 		text-wrap: balance;
@@ -162,13 +162,13 @@
 		animation: blink 1.1s steps(1) infinite;
 	}
 	.hero__lede {
-		max-width: 600px;
-		font-size: 18px;
+		max-width: 37.5rem;
+		font-size: 1.125rem;
 		color: var(--muted);
 	}
 	.hero__cta {
 		display: flex;
-		gap: 12px;
+		gap: 0.75rem;
 		flex-wrap: wrap;
 	}
 
@@ -189,9 +189,10 @@
 	}
 	.now__text {
 		font-weight: 700;
-		font-size: 24px;
+		font-size: 1.5rem;
 		line-height: 1.15;
 		letter-spacing: -0.015em;
+		text-wrap: balance;
 	}
 	.now .mini__note {
 		color: var(--inv-muted);
@@ -199,28 +200,28 @@
 
 	/* Row of three */
 	.third {
-		min-height: 204px;
-		padding: 24px;
+		min-height: 12.75rem;
+		padding: 1.5rem;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		gap: 12px;
+		gap: 0.75rem;
 	}
 	.third__big {
 		font-weight: 700;
-		font-size: 28px;
+		font-size: 1.75rem;
 		line-height: 1.1;
 		letter-spacing: -0.02em;
 	}
 	.third__text {
-		font-size: 15px;
+		font-size: 0.9375rem;
 		color: var(--muted);
 	}
 	.latest {
-		padding: 14px;
+		padding: 0.875rem;
 		flex-direction: row;
 		align-items: stretch;
-		gap: 16px;
+		gap: 1rem;
 		text-decoration: none;
 		color: var(--ink);
 		transition:
@@ -228,30 +229,53 @@
 			border-color 0.22s ease;
 	}
 	.latest:hover {
-		transform: translateY(-3px);
+		transform: translateY(-0.1875rem);
 		border-color: var(--accent);
 	}
 	.latest:hover .shot img {
 		transform: scale(1.03);
 	}
+	/* The image fills the frame without sizing it, so a wide tile can't be stretched taller
+	   by the screenshot's own proportions. */
 	.latest__shot {
+		position: relative;
 		flex: 1 1 50%;
-		min-height: 172px;
+		min-height: 10.75rem;
+	}
+	.latest__shot img {
+		position: absolute;
+		inset: 0;
 	}
 	.latest__body {
 		flex: 1 1 50%;
 		display: flex;
 		flex-direction: column;
 		justify-content: space-between;
-		padding: 10px 6px 10px 0;
+		padding: 0.625rem 0.375rem 0.625rem 0;
 	}
 	.latest__title {
 		font-weight: 700;
-		font-size: 24px;
+		font-size: 1.5rem;
 		line-height: 1.1;
 		letter-spacing: -0.015em;
 	}
 
+	/* Big screens, where the layout is wider than the 1440px design (see --page-max): the
+	   headline keeps its share of the lead tile instead of stopping at 84px, and the top row
+	   grows taller with the layout, but never so tall that the hero stops fitting on screen
+	   (16.25rem is the hero's padding and gaps plus the row of three). cqi is 1% of the
+	   hero's content width, which is 85rem in the 1440px design. */
+	@media (min-width: 1521px) {
+		.hero {
+			container-type: inline-size;
+		}
+		.hero__title {
+			font-size: clamp(5.25rem, 6.18cqi, 7rem);
+		}
+		.hero__lead {
+			min-height: max(34.875rem, min(41cqi, 100svh - var(--header-h) - 16.25rem));
+		}
+	}
 	@media (max-width: 960px) {
 		.hero__row,
 		.hero__row--thirds {
@@ -263,8 +287,8 @@
 	}
 	@media (max-width: 640px) {
 		.hero__lead {
-			padding: 28px 24px;
-			gap: 24px;
+			padding: 1.75rem 1.5rem;
+			gap: 1.5rem;
 		}
 	}
 	@media (max-width: 520px) {

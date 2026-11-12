@@ -89,8 +89,8 @@
 		<span class="chart__grid" style="top: 0" aria-hidden="true"></span>
 		<span class="chart__grid" style="top: 45.5%" aria-hidden="true"></span>
 		<span class="chart__grid" style="top: 90.9%" aria-hidden="true"></span>
-		<span class="chart__ylabel" style="top: 3px" aria-hidden="true">$50k</span>
-		<span class="chart__ylabel" style="top: calc(45.5% + 3px)" aria-hidden="true">$40k</span>
+		<span class="chart__ylabel" style="top: 0.1875rem" aria-hidden="true">$50k</span>
+		<span class="chart__ylabel" style="top: calc(45.5% + 0.1875rem)" aria-hidden="true">$40k</span>
 		<svg
 			class="chart__svg"
 			viewBox="0 0 {W} {H}"
@@ -126,24 +126,24 @@
 <style>
 	.chart {
 		flex: 1 1 auto;
-		padding: 22px 24px;
+		padding: 1.375rem 1.5rem;
 		display: flex;
 		flex-direction: column;
-		gap: 12px;
+		gap: 0.75rem;
 	}
 	.chart__head {
 		display: flex;
 		justify-content: space-between;
-		gap: 12px;
+		gap: 0.75rem;
 		flex-wrap: wrap;
 		font-family: var(--font-mono);
-		font-size: 11px;
+		font-size: 0.6875rem;
 		color: var(--muted);
 	}
 	.chart__live {
 		display: inline-flex;
 		align-items: center;
-		gap: 8px;
+		gap: 0.5rem;
 	}
 	.chart__live strong {
 		color: var(--accent);
@@ -152,12 +152,12 @@
 	.chart__readout {
 		display: flex;
 		align-items: baseline;
-		gap: 12px;
+		gap: 0.75rem;
 		flex-wrap: wrap;
 	}
 	.chart__value {
 		font-weight: 800;
-		font-size: 40px;
+		font-size: 2.5rem;
 		line-height: 1;
 		letter-spacing: -0.03em;
 		font-variant-numeric: tabular-nums;
@@ -167,13 +167,13 @@
 	}
 	.chart__month {
 		font-family: var(--font-mono);
-		font-size: 11px;
+		font-size: 0.6875rem;
 		color: var(--muted);
 	}
 	.chart__plot {
 		position: relative;
 		flex: 1 1 auto;
-		min-height: 150px;
+		min-height: 9.375rem;
 		cursor: ew-resize;
 		touch-action: pan-y;
 	}
@@ -187,7 +187,7 @@
 		position: absolute;
 		left: 0;
 		font-family: var(--font-mono);
-		font-size: 10px;
+		font-size: 0.625rem;
 		color: var(--muted);
 	}
 	.chart__svg {
@@ -205,7 +205,7 @@
 	.chart__line {
 		fill: none;
 		stroke: var(--accent);
-		stroke-width: 2.5;
+		stroke-width: 0.15625rem;
 		stroke-linecap: round;
 		stroke-linejoin: round;
 		vector-effect: non-scaling-stroke;
@@ -221,12 +221,12 @@
 	}
 	.chart__marker {
 		position: absolute;
-		width: 14px;
-		height: 14px;
-		margin: -7px 0 0 -7px;
+		width: 0.875rem;
+		height: 0.875rem;
+		margin: -0.4375rem 0 0 -0.4375rem;
 		border-radius: 50%;
 		background: var(--accent);
-		border: 3px solid var(--tile);
+		border: 0.1875rem solid var(--tile);
 		pointer-events: none;
 		transition:
 			left 0.15s ease-out,
@@ -236,23 +236,23 @@
 		display: flex;
 		justify-content: space-between;
 		font-family: var(--font-mono);
-		font-size: 10px;
+		font-size: 0.625rem;
 		color: var(--muted);
 	}
 	.chart__foot {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: 12px;
+		gap: 0.75rem;
 		flex-wrap: wrap;
 		font-family: var(--font-mono);
-		font-size: 11px;
+		font-size: 0.6875rem;
 		color: var(--muted);
 	}
 	.chart__range {
-		flex: 0 1 150px;
+		flex: 0 1 9.375rem;
 		min-width: 0;
-		height: 24px;
+		height: 1.5rem;
 		margin: 0;
 		accent-color: var(--accent);
 		cursor: ew-resize;

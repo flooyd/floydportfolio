@@ -32,12 +32,12 @@
 
 <style>
 	.approach {
-		padding-top: 72px;
-		padding-bottom: 72px;
+		padding-top: 4.5rem;
+		padding-bottom: 4.5rem;
 	}
 	.approach .h2 {
-		margin: 10px 0 40px;
-		max-width: 900px;
+		margin: 0.625rem 0 2.5rem;
+		max-width: 56.25rem;
 	}
 	.steps {
 		display: grid;
@@ -48,58 +48,58 @@
 		padding: 0;
 	}
 	.step {
-		min-height: 240px;
-		padding: 24px;
+		min-height: 15rem;
+		padding: 1.5rem;
 		display: flex;
 		flex-direction: column;
-		gap: 12px;
+		gap: 0.75rem;
 	}
 	.step__head {
 		display: flex;
 		justify-content: space-between;
 		align-items: center;
 		font-family: var(--font-mono);
-		font-size: 11px;
+		font-size: 0.6875rem;
 	}
 	.step__num {
 		color: var(--accent);
 		font-weight: 600;
 	}
 	.owner {
-		padding: 4px 9px;
+		padding: 0.25rem 0.5625rem;
 		border: 1px solid var(--line-strong);
 		border-radius: var(--radius-chip);
 		letter-spacing: 0.08em;
 		color: var(--muted);
 	}
 	.owner--pair {
-		padding: 5px 9px;
+		padding: 0.3125rem 0.5625rem;
 		border: 0;
 		background: var(--accent-fill);
 		color: var(--on-accent);
 	}
 	.step__title {
 		font-weight: 700;
-		font-size: 28px;
+		font-size: 1.75rem;
 		letter-spacing: -0.02em;
 	}
 	.step__text {
-		font-size: 15px;
+		font-size: 0.9375rem;
 		color: var(--muted);
 	}
 
 	@media (max-width: 1100px) {
 		.steps {
-			grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+			grid-template-columns: repeat(auto-fit, minmax(13.75rem, 1fr));
 		}
 		.step {
-			min-height: 200px;
+			min-height: 12.5rem;
 		}
 	}
 	@media (max-width: 640px) {
 		.approach {
-			padding-top: 48px;
-			padding-bottom: 48px;
+			padding-top: 3rem;
+			padding-bottom: 3rem;
 		}
 		.step {
 			min-height: 0;

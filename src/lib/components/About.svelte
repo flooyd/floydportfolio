@@ -57,8 +57,8 @@
 
 <style>
 	.about {
-		padding-top: 72px;
-		padding-bottom: 72px;
+		padding-top: 4.5rem;
+		padding-bottom: 4.5rem;
 	}
 	.about__grid {
 		display: grid;
@@ -66,14 +66,14 @@
 		gap: var(--gap);
 	}
 	.about__tile {
-		padding: 40px;
+		padding: 2.5rem;
 		display: flex;
 		flex-direction: column;
-		gap: 20px;
+		gap: 1.25rem;
 	}
 	.about__lead {
 		font-weight: 500;
-		font-size: 24px;
+		font-size: 1.5rem;
 		line-height: 1.3;
 		letter-spacing: -0.015em;
 	}
@@ -81,10 +81,10 @@
 		color: var(--muted);
 	}
 	.roles {
-		margin-top: 8px;
+		margin-top: 0.5rem;
 		display: flex;
 		flex-direction: column;
-		gap: 6px;
+		gap: 0.375rem;
 		list-style: none;
 		padding: 0;
 	}
@@ -92,10 +92,10 @@
 		display: flex;
 		justify-content: space-between;
 		align-items: baseline;
-		gap: 4px 16px;
+		gap: 0.25rem 1rem;
 		flex-wrap: wrap;
-		padding: 8px 0 8px 16px;
-		border-left: 2px solid var(--line); /* the resume's entry rule */
+		padding: 0.5rem 0 0.5rem 1rem;
+		border-left: 0.125rem solid var(--line); /* the resume's entry rule */
 	}
 	.role--current {
 		border-left-color: var(--line-strong);
@@ -108,12 +108,12 @@
 		font-weight: 700;
 	}
 	.role__org {
-		font-size: 15px;
+		font-size: 0.9375rem;
 		color: var(--muted);
 	}
 	.role__dates {
 		font-family: var(--font-mono);
-		font-size: 11px;
+		font-size: 0.6875rem;
 		color: var(--accent);
 	}
 	/* Keep the press wrapper to the button's width instead of the tile's. */
@@ -121,27 +121,27 @@
 		align-self: flex-start;
 	}
 	.skills {
-		gap: 8px;
+		gap: 0.5rem;
 	}
 	.skill {
 		display: flex;
 		flex-wrap: wrap;
-		gap: 8px 32px;
-		padding: 20px 0;
+		gap: 0.5rem 2rem;
+		padding: 1.25rem 0;
 		border-bottom: 1px solid var(--line);
 	}
 	.skill:last-child {
 		border-bottom: 0;
 	}
 	.skill__title {
-		flex: 0 0 220px;
+		flex: 0 0 13.75rem;
 		font-weight: 700;
-		font-size: 22px;
+		font-size: 1.375rem;
 		letter-spacing: -0.015em;
 	}
 	.skill__text {
-		flex: 1 1 280px;
-		font-size: 16px;
+		flex: 1 1 17.5rem;
+		font-size: 1rem;
 		color: var(--muted);
 	}
 
@@ -152,18 +152,18 @@
 	}
 	@media (max-width: 640px) {
 		.about {
-			padding-top: 48px;
-			padding-bottom: 48px;
+			padding-top: 3rem;
+			padding-bottom: 3rem;
 		}
 		.about__tile {
-			padding: 28px 24px;
+			padding: 1.75rem 1.5rem;
 		}
 		.skill__title {
 			flex-basis: 100%;
 		}
 		.role {
 			flex-direction: column;
-			gap: 2px;
+			gap: 0.125rem;
 		}
 	}
 </style>

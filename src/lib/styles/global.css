@@ -11,19 +11,26 @@
 *::after {
 	box-sizing: border-box;
 }
+/* Every size on the site is in rem, so this one value scales the whole page. It stays at 16px
+   until the layout has reached its full width (1520px), then grows 1px for every 170px of
+   extra viewport: 1.5x on a 2880px screen, a little under 2x at 4K, where it stops. That is
+   slower than the screen grows, so a big display shows a bigger page and more of it (the
+   layout widens too: see --page-max in tokens.css). The vh term keeps a wide but short
+   window from scaling the page past what its height can show. */
 html {
+	font-size: clamp(16px, min(16px + (100vw - 1520px) / 170, 1.9vh), 30px);
 	scroll-behavior: smooth;
 	/* Anchor links stop just below the sticky header. SiteHeader sets --header-h to the
 	   header's measured height; the values below cover the moment before it runs. */
-	--header-h: 72px;
-	scroll-padding-top: calc(var(--header-h) + 4px);
+	--header-h: 4.5rem;
+	scroll-padding-top: calc(var(--header-h) + 0.25rem);
 }
 body {
 	margin: 0;
 	background: var(--bg);
 	color: var(--ink);
 	font-family: var(--font-sans);
-	font-size: 17px;
+	font-size: 1.0625rem;
 	line-height: 1.5;
 	-webkit-font-smoothing: antialiased;
 	text-rendering: optimizeLegibility;
@@ -47,8 +54,8 @@ p {
 	display: flex;
 	flex-direction: column;
 	/* Graph-paper dots: the only background texture on the site. */
-	background-image: radial-gradient(var(--grid) 1px, transparent 1px);
-	background-size: 22px 22px;
+	background-image: radial-gradient(var(--grid) 0.0625rem, transparent 0.0625rem);
+	background-size: 1.375rem 1.375rem;
 }
 .wrap {
 	width: 100%;
@@ -58,37 +65,37 @@ p {
 }
 
 :focus-visible {
-	outline: 2px solid var(--accent);
-	outline-offset: 3px;
+	outline: 0.125rem solid var(--accent);
+	outline-offset: 0.1875rem;
 }
 
 .skip {
 	position: absolute;
-	left: 16px;
-	top: -60px;
+	left: 1rem;
+	top: -3.75rem;
 	z-index: 30; /* above the sticky header */
-	padding: 12px 16px;
+	padding: 0.75rem 1rem;
 	border-radius: var(--radius-ctl);
 	background: var(--accent-fill);
 	color: var(--on-accent);
 	font-family: var(--font-mono);
-	font-size: 12px;
+	font-size: 0.75rem;
 	text-decoration: none;
 }
 .skip:focus {
-	top: 16px;
+	top: 1rem;
 }
 
 /* ---------- Shared pieces ---------- */
 .label {
 	font-family: var(--font-mono);
-	font-size: 11px;
+	font-size: 0.6875rem;
 	letter-spacing: 0.12em;
 	text-transform: uppercase;
 	color: var(--muted);
 }
 .label--section {
-	font-size: 12px;
+	font-size: 0.75rem;
 }
 .label--accent {
 	color: var(--accent);
@@ -117,35 +124,35 @@ p {
 .chips {
 	display: flex;
 	flex-wrap: wrap;
-	gap: 6px;
+	gap: 0.375rem;
 	font-family: var(--font-mono);
-	font-size: 11px;
+	font-size: 0.6875rem;
 }
 .chips--lg {
-	gap: 8px;
+	gap: 0.5rem;
 }
 .chip {
-	padding: 5px 9px;
+	padding: 0.3125rem 0.5625rem;
 	border-radius: var(--radius-chip);
 	background: var(--chip-bg);
 	color: var(--chip-ink);
 	font-family: var(--font-mono);
-	font-size: 11px;
+	font-size: 0.6875rem;
 }
 .chips--lg .chip {
-	padding: 6px 10px;
+	padding: 0.375rem 0.625rem;
 }
 
 .btn {
 	display: inline-flex;
 	align-items: center;
-	gap: 10px;
-	min-height: 52px;
-	padding: 0 24px;
+	gap: 0.625rem;
+	min-height: 3.25rem;
+	padding: 0 1.5rem;
 	border-radius: var(--radius-ctl);
 	border: 1px solid transparent;
 	font-family: var(--font-sans);
-	font-size: 16px;
+	font-size: 1rem;
 	font-weight: 700;
 	text-decoration: none;
 	cursor: pointer;
@@ -172,15 +179,15 @@ p {
 	border-color: var(--accent);
 }
 .btn--sm {
-	min-height: 44px;
-	padding: 0 18px;
+	min-height: 2.75rem;
+	padding: 0 1.125rem;
 	font-family: var(--font-mono);
-	font-size: 12px;
+	font-size: 0.75rem;
 	font-weight: 400;
 }
 .btn svg {
-	width: 16px;
-	height: 16px;
+	width: 1rem;
+	height: 1rem;
 	fill: none;
 	stroke: currentColor;
 	stroke-width: 2.2;
@@ -190,15 +197,15 @@ p {
 
 .dot {
 	flex: none;
-	width: 8px;
-	height: 8px;
+	width: 0.5rem;
+	height: 0.5rem;
 	border-radius: 50%;
 	background: var(--accent);
 	animation: pulse 2s ease-out infinite;
 }
 .dot--sm {
-	width: 7px;
-	height: 7px;
+	width: 0.4375rem;
+	height: 0.4375rem;
 }
 .arrow {
 	color: var(--accent);
@@ -207,27 +214,27 @@ p {
 /* Section headings (Work, Approach) */
 .h2 {
 	font-weight: 800;
-	font-size: 64px;
+	font-size: 4rem;
 	line-height: 1;
 	letter-spacing: -0.035em;
 }
 .h2--fluid {
-	font-size: clamp(40px, 4.4vw, 64px);
+	font-size: clamp(2.5rem, 4.4vw, 4rem);
 	text-wrap: balance;
 }
 
 /* Small hero tiles (Motion study, Now) */
 .mini {
-	min-height: 196px;
-	padding: 22px 24px;
+	min-height: 12.25rem;
+	padding: 1.375rem 1.5rem;
 	display: flex;
 	flex-direction: column;
 	justify-content: space-between;
-	gap: 12px;
+	gap: 0.75rem;
 }
 .mini__note {
 	font-family: var(--font-mono);
-	font-size: 11px;
+	font-size: 0.6875rem;
 	color: var(--muted);
 	text-wrap: balance;
 }
@@ -255,7 +262,7 @@ p {
 	border-style: dashed;
 	border-color: var(--line-strong);
 	font-family: var(--font-mono);
-	font-size: 11px;
+	font-size: 0.6875rem;
 	color: var(--muted);
 }
 
@@ -316,7 +323,7 @@ motion-headline > span[aria-hidden] {
 		box-shadow: 0 0 0 0 var(--pulse);
 	}
 	70% {
-		box-shadow: 0 0 0 7px transparent;
+		box-shadow: 0 0 0 0.4375rem transparent;
 	}
 	100% {
 		box-shadow: 0 0 0 0 transparent;
@@ -341,10 +348,10 @@ motion-headline > span[aria-hidden] {
 	}
 	36%,
 	66% {
-		transform: translateY(-60px) scaleX(1);
+		transform: translateY(-3.75rem) scaleX(1);
 	}
 	80% {
-		transform: translateY(-60px) scaleX(0.45);
+		transform: translateY(-3.75rem) scaleX(0.45);
 	}
 	92%,
 	100% {
@@ -358,7 +365,7 @@ motion-headline > span[aria-hidden] {
 	}
 	36%,
 	80% {
-		transform: translateY(30px);
+		transform: translateY(1.875rem);
 	}
 	92%,
 	100% {
@@ -380,16 +387,16 @@ motion-headline > span[aria-hidden] {
 /* ---------- Responsive (shared pieces only) ---------- */
 @media (max-width: 640px) {
 	:root {
-		--gutter: 20px;
+		--gutter: 1.25rem;
 	}
 	.h2 {
-		font-size: 48px;
+		font-size: 3rem;
 	}
 }
 /* The header's links wrap onto a second row here (see SiteHeader). */
 @media (max-width: 900px) {
 	html {
-		--header-h: 98px;
+		--header-h: 6.125rem;
 	}
 }
 /* The header is not pinned on very narrow or very short screens (see SiteHeader). */
@@ -401,6 +408,6 @@ motion-headline > span[aria-hidden] {
 @media (max-width: 520px) {
 	.mini {
 		min-height: 0;
-		gap: 20px;
+		gap: 1.25rem;
 	}
 }

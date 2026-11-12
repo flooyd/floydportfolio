@@ -47,55 +47,68 @@
 	}
 	/* The card's padding and column layout live on the spotlight, which fills the card. */
 	.card__spot {
-		padding: 16px;
+		padding: 1rem;
 		display: flex;
 		flex-direction: column;
-		gap: 16px;
+		gap: 1rem;
 		border-radius: calc(var(--radius-tile) - 1px);
 		--mc-spotlight-color: color-mix(in srgb, var(--accent) 13%, transparent);
 	}
 	.card:hover {
-		transform: translateY(-3px);
+		transform: translateY(-0.1875rem);
 		border-color: var(--accent);
 	}
 	.card:hover .shot img {
 		transform: scale(1.03);
 	}
 	.card .shot {
-		height: 200px;
+		height: 12.5rem;
 	}
 	/* The row wrappers live in Work.svelte. */
 	:global(.work__row--feature) .card .shot {
-		height: 380px;
+		height: 23.75rem;
 	}
 	.card__body {
 		display: flex;
 		flex-direction: column;
-		gap: 8px;
-		padding: 4px 8px 8px;
+		gap: 0.5rem;
+		padding: 0.25rem 0.5rem 0.5rem;
 	}
 	.card__title {
 		font-weight: 700;
-		font-size: 28px;
+		font-size: 1.75rem;
 		line-height: 1.05;
 		letter-spacing: -0.02em;
 	}
 	.card--feature .card__title {
-		font-size: 34px;
+		font-size: 2.125rem;
 		letter-spacing: -0.025em;
 	}
 	.card__text {
-		max-width: 640px;
+		max-width: 40rem;
 		color: var(--muted);
 	}
 	.card .chips {
-		margin-top: 4px;
+		margin-top: 0.25rem;
 	}
 	/* !important: motion-stagger leaves an inline opacity on the cards once they have risen in. */
 	.is-dim {
 		opacity: 0.28 !important;
 	}
 
+	/* Big screens: the rows are wider than the 1440px design, so the screenshots grow taller
+	   with them and keep their shape. cqi is 1% of the row's width (85rem in that design). */
+	@media (min-width: 1521px) {
+		:global(.work__row) {
+			container-type: inline-size;
+		}
+		.card .shot {
+			height: max(12.5rem, 14.7cqi);
+		}
+		:global(.work__row--feature) .card .shot {
+			height: max(23.75rem, 27.94cqi);
+		}
+	}
 	@media (max-width: 960px) {
 		.card .shot {
 			height: auto;

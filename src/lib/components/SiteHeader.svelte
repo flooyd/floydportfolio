@@ -25,8 +25,10 @@
 		if (!el || !bar) return;
 		// The bar can wrap to two rows. Show the marker only while the link is on the row that
 		// touches the rule; otherwise the link's own color carries the highlight.
-		const onRule = bar.clientHeight - (el.offsetTop + el.offsetHeight) < 24;
-		marker = { x: el.offsetLeft + 16, w: onRule ? el.offsetWidth - 32 : 0 };
+		const onRule = bar.clientHeight - (el.offsetTop + el.offsetHeight) < el.offsetHeight / 2;
+		// Inset by the link's own padding (it scales with the page), so the marker spans the text.
+		const pad = parseFloat(getComputedStyle(el).paddingLeft) || 0;
+		marker = { x: el.offsetLeft + pad, w: onRule ? el.offsetWidth - pad * 2 : 0 };
 	}
 	$: active, placeMarker();
 
@@ -107,48 +109,48 @@
 		top: 0;
 		z-index: 20;
 		background:
-			radial-gradient(var(--grid) 1px, transparent 1px) 0 0 / 22px 22px,
+			radial-gradient(var(--grid) 0.0625rem, transparent 0.0625rem) 0 0 / 1.375rem 1.375rem,
 			var(--bg);
 	}
 	.site-header__bar {
 		position: relative;
-		min-height: 72px;
+		min-height: 4.5rem;
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: 8px 24px;
+		gap: 0.5rem 1.5rem;
 		flex-wrap: wrap;
-		border-bottom: 2px solid var(--ink); /* the resume's thick header rule */
+		border-bottom: 0.125rem solid var(--ink); /* the resume's thick header rule */
 	}
 	.wordmark {
 		display: inline-flex;
 		align-items: center;
-		min-height: 44px;
+		min-height: 2.75rem;
 		font-weight: 800;
-		font-size: 23px;
+		font-size: 1.4375rem;
 		letter-spacing: -0.02em;
 		text-decoration: none;
 	}
 	/* static, as on the resume */
 	.wordmark__cursor {
-		width: 8px;
-		height: 22px;
-		margin-left: 6px;
+		width: 0.5rem;
+		height: 1.375rem;
+		margin-left: 0.375rem;
 		background: var(--accent-fill);
 	}
 	.site-nav {
 		display: flex;
-		gap: 4px;
+		gap: 0.25rem;
 		flex-wrap: wrap;
 		font-family: var(--font-mono);
-		font-size: 12px;
+		font-size: 0.75rem;
 	}
 	.site-nav a {
 		display: inline-flex;
 		align-items: center;
-		gap: 6px;
-		min-height: 44px;
-		padding: 0 16px;
+		gap: 0.375rem;
+		min-height: 2.75rem;
+		padding: 0 1rem;
 		color: var(--muted);
 		text-decoration: none;
 		transition: color 0.18s ease;
@@ -161,8 +163,8 @@
 	.site-nav__marker {
 		position: absolute;
 		left: 0;
-		bottom: -3px;
-		height: 4px;
+		bottom: -0.1875rem;
+		height: 0.25rem;
 		background: var(--accent-fill);
 		opacity: 0;
 		pointer-events: none;
@@ -177,7 +179,7 @@
 	.site-actions {
 		display: flex;
 		align-items: center;
-		gap: 8px;
+		gap: 0.5rem;
 	}
 
 	/* Below this the links, three controls and the name don't fit on one row, so the links
@@ -186,7 +188,7 @@
 		.site-nav {
 			order: 3;
 			width: 100%;
-			margin-inline: -16px;
+			margin-inline: -1rem;
 		}
 	}
 	/* On very narrow or very short screens a pinned header would cover too much of the page,

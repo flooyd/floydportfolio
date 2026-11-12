@@ -63,8 +63,8 @@
 
 <style>
 	.icon-btn {
-		width: 44px;
-		height: 44px;
+		width: 2.75rem;
+		height: 2.75rem;
 		padding: 0;
 		display: inline-flex;
 		align-items: center;
@@ -80,8 +80,8 @@
 		border-color: var(--accent);
 	}
 	.icon-btn svg {
-		width: 18px;
-		height: 18px;
+		width: 1.125rem;
+		height: 1.125rem;
 		fill: none;
 		stroke: currentColor;
 		stroke-width: 1.8;
@@ -89,10 +89,10 @@
 		stroke-linejoin: round;
 	}
 	motion-icon {
-		--mc-icon-size: 18px;
+		--mc-icon-size: 1.125rem;
 		display: inline-block;
-		width: 18px;
-		height: 18px;
+		width: 1.125rem;
+		height: 1.125rem;
 		line-height: 0;
 	}
 	/* No data-theme (scripts off) falls back to the light tokens, so it shows the moon too. */

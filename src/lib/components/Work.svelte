@@ -75,43 +75,43 @@
 
 <style>
 	.work {
-		padding-top: 88px;
-		padding-bottom: 72px;
+		padding-top: 5.5rem;
+		padding-bottom: 4.5rem;
 	}
 	.section-head {
 		display: flex;
 		align-items: flex-end;
 		justify-content: space-between;
-		gap: 24px;
+		gap: 1.5rem;
 		flex-wrap: wrap;
-		margin: 10px 0 32px;
+		margin: 0.625rem 0 2rem;
 	}
 	.section-head__title {
 		display: flex;
 		align-items: baseline;
-		gap: 20px;
+		gap: 1.25rem;
 		flex-wrap: wrap;
 	}
 	.section-head__meta {
 		font-family: var(--font-mono);
-		font-size: 12px;
+		font-size: 0.75rem;
 		color: var(--muted);
 	}
 
 	.filters {
 		display: flex;
-		gap: 8px;
+		gap: 0.5rem;
 		flex-wrap: wrap;
 	}
 	.filter {
-		min-height: 44px;
-		padding: 0 16px;
+		min-height: 2.75rem;
+		padding: 0 1rem;
 		border-radius: var(--radius-ctl);
 		border: 1px solid var(--line-strong);
 		background: var(--tile);
 		color: var(--ink);
 		font-family: var(--font-mono);
-		font-size: 12px;
+		font-size: 0.75rem;
 		cursor: pointer;
 		transition:
 			transform 0.18s ease,
@@ -140,20 +140,20 @@
 	}
 
 	.subhead {
-		margin: 48px 0 12px;
+		margin: 3rem 0 0.75rem;
 		font-weight: 400;
 	}
 	.rows {
 		display: grid;
 		grid-template-columns: repeat(2, minmax(0, 1fr));
-		column-gap: 32px;
+		column-gap: 2rem;
 	}
 	.row {
 		display: flex;
 		align-items: center;
 		justify-content: space-between;
-		gap: 16px;
-		min-height: 64px;
+		gap: 1rem;
+		min-height: 4rem;
 		border-top: 1px solid var(--line);
 		text-decoration: none;
 		color: var(--ink);
@@ -161,7 +161,7 @@
 	}
 	.row__title {
 		font-weight: 700;
-		font-size: 20px;
+		font-size: 1.25rem;
 		letter-spacing: -0.01em;
 		transition: color 0.18s ease;
 	}
@@ -169,7 +169,7 @@
 		color: var(--accent);
 	}
 	.row__text {
-		font-size: 15px;
+		font-size: 0.9375rem;
 		color: var(--muted);
 		text-align: right;
 	}
@@ -189,15 +189,15 @@
 	}
 	@media (max-width: 640px) {
 		.work {
-			padding-top: 64px;
-			padding-bottom: 48px;
+			padding-top: 4rem;
+			padding-bottom: 3rem;
 		}
 		.row {
 			flex-direction: column;
 			align-items: flex-start;
 			justify-content: center;
-			gap: 2px;
-			padding: 12px 0;
+			gap: 0.125rem;
+			padding: 0.75rem 0;
 		}
 		.row__text {
 			text-align: left;
