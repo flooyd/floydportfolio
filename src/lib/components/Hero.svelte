@@ -2,12 +2,68 @@
 	import { stack } from '$lib/data/projects.js';
 	import NetWorthChart from './NetWorthChart.svelte';
 	import MotionStudy from './MotionStudy.svelte';
+	import { onDestroy } from 'svelte';
 
-	// The headline types itself in. Its line breaks are written in (see .hero__title) so the
-	// line being typed never re-wraps the lines above it.
-	const title = 'Interfaces for\npeople who live\nin their data.';
-	// The cursor holds still while it types and blinks once it stops, like a real caret.
+	// The headlines take turns: one types itself in, stays a while, is deleted, and the next
+	// types in. Line breaks are written in (see .hero__title) so the line being typed never
+	// re-wraps the lines above it. Keep each to three lines of about 15 characters at most:
+	// the title's smallest font size is worked out from the longest line.
+	const titles = [
+		'Interfaces for\npeople who live\nin their data.',
+		'Motion that\nshows what\njust changed.',
+		'Built for the\n400th record\nof the day.'
+	];
+	/** How long a finished headline stays before it is deleted, in milliseconds. */
+	const HOLD = 4500;
+	/** Time per deleted character, in milliseconds: less than half the typing time (45ms). */
+	const ERASE = 20;
+
+	/** Which headline is showing. */
+	let index = 0;
+	/** True until the first headline has been deleted. */
+	let first = true;
+	// The cursor holds still while a headline is typed or deleted and blinks in between, like a
+	// real caret.
 	let typing = false;
+	/** While a headline is being deleted, what is left of it. Otherwise null. @type {string | null} */
+	let erasing = null;
+	/** @type {ReturnType<typeof setTimeout> | undefined} */
+	let timer;
+
+	// motion-typewriter types each headline (a new element per headline, because it reads its
+	// text once), but it can only delete in order to retype the same text, so the deleting is
+	// done here. With reduced motion the typewriter shows the first headline whole and never
+	// reports a finished run, so nothing below runs and the headline stays put.
+	function typed() {
+		typing = false;
+		timer = setTimeout(erase, HOLD);
+	}
+	function erase() {
+		const left = erasing ?? titles[index];
+		if (left === '') {
+			erasing = null;
+			first = false;
+			index = (index + 1) % titles.length;
+			return;
+		}
+		erasing = left.slice(0, -1);
+		timer = setTimeout(erase, ERASE);
+	}
+	onDestroy(() => clearTimeout(timer));
+
+	// Svelte adds a new element to the page before it adds the element's text, and
+	// motion-typewriter reads its text once, at the moment it is added: a typewriter made after
+	// the first one would read nothing. If this one is already live and its text arrived late,
+	// take it out and put it straight back so it reads the text. (The first typewriter comes
+	// with its text in the server's HTML and is defined later, so it is left alone.)
+	/** @param {HTMLElement} node */
+	function readText(node) {
+		const parent = node.parentNode;
+		if (!parent || !node.matches(':defined') || !node.textContent) return;
+		const next = node.nextSibling;
+		node.remove();
+		parent.insertBefore(node, next);
+	}
 </script>
 
 <section class="hero wrap" id="top">
@@ -21,20 +77,37 @@
 						><strong>Front-end engineer</strong> · Austin, TX · taking new work</span
 					>
 				</p>
-				<!-- An invisible copy of the headline holds its full size, so the text below stays put
-				     while the typewriter (stacked on top of it) is still empty. The typewriter's own
-				     caret is a thin bar that can't be restyled, so the site's block cursor is drawn by
-				     CSS instead (see .hero__title below). -->
+				<!-- Invisible copies of every headline hold the size of the largest, so the text below
+				     stays put while the visible one (stacked on top of them) is typed and deleted.
+				     The typewriter's own caret is a thin bar that can't be restyled, so the site's
+				     block cursor is drawn by CSS instead (see .hero__title below). -->
 				<h1 class="hero__title">
-					<span class="hero__title-size" aria-hidden="true" translate="no">{title}</span>
-					<motion-typewriter
-						class:is-typing={typing}
-						delay="0.45"
-						interval="0.045"
-						cursor="false"
-						on:motion-start={() => (typing = true)}
-						on:motion-finish={() => (typing = false)}>{title}</motion-typewriter
-					>
+					{#each titles as title}
+						<span class="hero__title-size" aria-hidden="true" translate="no">{title}</span>
+					{/each}
+					{#if erasing !== null}
+						<!-- Being deleted. Screen readers keep the whole headline, as the typewriter gives them. -->
+						<span class="hero__title-text is-typing" aria-hidden="true" translate="no"
+							>{erasing}</span
+						>
+						<span class="hero__title-read">{titles[index]}</span>
+					{:else}
+						{#key index}
+							<!-- The first one waits for its tile to rise in; later ones for a beat after the deleting.
+						     The settings are real numbers and a real false, not text: on an element made in
+						     the browser Svelte sets them as properties, where the text "false" would count as on. -->
+							<motion-typewriter
+								class="hero__title-text"
+								class:is-typing={typing}
+								delay={first ? 0.45 : 0.35}
+								interval={0.045}
+								cursor={false}
+								use:readText
+								on:motion-start={() => (typing = true)}
+								on:motion-finish={typed}>{titles[index]}</motion-typewriter
+							>
+						{/key}
+					{/if}
 				</h1>
 				<p class="hero__lede">
 					I'm Floyd. I build dashboards, editors and internal tools in React and Svelte, with motion
@@ -163,22 +236,34 @@
 		font-size: clamp(min(2.75rem, (100vw - 5.625rem) / 7.1), 5.8vw, 5.25rem);
 		line-height: 0.95;
 		letter-spacing: -0.035em;
-		/* The invisible copy and the typewriter share one grid cell. Both keep the written-in
-		   line breaks, so they wrap the same way and the finished line lands exactly on its
-		   copy. (No text-wrap: balance: it would re-balance the lines on every keystroke.) */
+		/* The invisible copies and the visible headline share one grid cell. All keep the
+		   written-in line breaks, so they wrap the same way and a finished headline lands
+		   exactly on its copy. (No text-wrap: balance: it would re-balance the lines on every
+		   keystroke.) */
 		display: grid;
 		white-space: pre-line;
 	}
-	.hero__title > * {
+	.hero__title-size,
+	.hero__title-text {
 		grid-area: 1 / 1;
 	}
 	.hero__title-size {
 		visibility: hidden;
 	}
-	/* The block cursor rides just after the last typed character. The copy carries one too, so
-	   the cursor can never push the finished line to a size the copy didn't reserve. With no
-	   script, or reduced motion, the whole headline shows with the cursor after it. */
-	.hero__title > *::after {
+	/* The whole headline, for screen readers, while the visible one is being deleted. */
+	.hero__title-read {
+		position: absolute;
+		width: 1px;
+		height: 1px;
+		overflow: hidden;
+		clip-path: inset(50%);
+		white-space: nowrap;
+	}
+	/* The block cursor rides just after the last visible character. The copies carry one too,
+	   so the cursor can never push a finished headline to a size they didn't reserve. With no
+	   script, or reduced motion, the first headline shows whole with the cursor after it. */
+	.hero__title-size::after,
+	.hero__title-text::after {
 		content: '';
 		display: inline-block;
 		width: 0.17em;
@@ -187,7 +272,7 @@
 		background: var(--accent-fill);
 		animation: blink 1.1s steps(1) infinite;
 	}
-	.hero__title > .is-typing::after {
+	.hero__title-text.is-typing::after {
 		animation: none;
 	}
 	.hero__lede {
