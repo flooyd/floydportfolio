@@ -2,11 +2,17 @@
 	import { stack } from '$lib/data/projects.js';
 	import NetWorthChart from './NetWorthChart.svelte';
 	import MotionStudy from './MotionStudy.svelte';
+
+	// The headline types itself in. Its line breaks are written in (see .hero__title) so the
+	// line being typed never re-wraps the lines above it.
+	const title = 'Interfaces for\npeople who live\nin their data.';
+	// The cursor holds still while it types and blinks once it stops, like a real caret.
+	let typing = false;
 </script>
 
 <section class="hero wrap" id="top">
 	<!-- Page load: the tiles rise in one after another (the staggers are display: contents, so
-	     the grid is untouched) and the headline slides up word by word. -->
+	     the grid is untouched) and the headline types itself in. -->
 	<div class="hero__row">
 		<motion-stagger duration="0.7" y="20">
 			<div class="tile hero__lead">
@@ -15,11 +21,19 @@
 						><strong>Front-end engineer</strong> · Austin, TX · taking new work</span
 					>
 				</p>
-				<!-- The blinking cursor is drawn by CSS after the last word (see .hero__title below),
-			     because motion-headline keeps plain text only. -->
+				<!-- An invisible copy of the headline holds its full size, so the text below stays put
+				     while the typewriter (stacked on top of it) is still empty. The typewriter's own
+				     caret is a thin bar that can't be restyled, so the site's block cursor is drawn by
+				     CSS instead (see .hero__title below). -->
 				<h1 class="hero__title">
-					<motion-headline delay="0.15" interval="0.05" duration="0.9"
-						>Interfaces for people who live in their data.</motion-headline
+					<span class="hero__title-size" aria-hidden="true" translate="no">{title}</span>
+					<motion-typewriter
+						class:is-typing={typing}
+						delay="0.45"
+						interval="0.045"
+						cursor="false"
+						on:motion-start={() => (typing = true)}
+						on:motion-finish={() => (typing = false)}>{title}</motion-typewriter
 					>
 				</h1>
 				<p class="hero__lede">
@@ -143,16 +157,28 @@
 	}
 	.hero__title {
 		font-weight: 800;
-		font-size: clamp(2.75rem, 5.8vw, 5.25rem);
+		/* The smallest size gives way on phones under ~400px wide, so the longest line ("people
+		   who live", 6.9em) still fits inside the page gutter, the tile's padding and its
+		   borders (5.625rem together) instead of dropping "live" onto a line of its own. */
+		font-size: clamp(min(2.75rem, (100vw - 5.625rem) / 7.1), 5.8vw, 5.25rem);
 		line-height: 0.95;
 		letter-spacing: -0.035em;
-		text-wrap: balance;
+		/* The invisible copy and the typewriter share one grid cell. Both keep the written-in
+		   line breaks, so they wrap the same way and the finished line lands exactly on its
+		   copy. (No text-wrap: balance: it would re-balance the lines on every keystroke.) */
+		display: grid;
+		white-space: pre-line;
 	}
-	/* The cursor rides on the last word, inside its mask, so it slides up with "data." and can
-	   never wrap onto a line of its own. Before the headline is split (no script yet, or none
-	   at all) it follows the text instead. */
-	.hero__title :global(motion-headline > span:last-child > [data-unit]::after),
-	.hero__title :global(motion-headline:not([data-ready])::after) {
+	.hero__title > * {
+		grid-area: 1 / 1;
+	}
+	.hero__title-size {
+		visibility: hidden;
+	}
+	/* The block cursor rides just after the last typed character. The copy carries one too, so
+	   the cursor can never push the finished line to a size the copy didn't reserve. With no
+	   script, or reduced motion, the whole headline shows with the cursor after it. */
+	.hero__title > *::after {
 		content: '';
 		display: inline-block;
 		width: 0.17em;
@@ -160,6 +186,9 @@
 		margin-left: 0.1em;
 		background: var(--accent-fill);
 		animation: blink 1.1s steps(1) infinite;
+	}
+	.hero__title > .is-typing::after {
+		animation: none;
 	}
 	.hero__lede {
 		max-width: 37.5rem;

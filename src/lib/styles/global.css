@@ -269,7 +269,8 @@ p {
 /* ---------- motion-components ---------- */
 /* Give the elements their final display before they are defined, so nothing shifts on upgrade. */
 motion-reveal,
-motion-headline {
+motion-headline,
+motion-typewriter {
 	display: block;
 }
 motion-stagger {
@@ -286,6 +287,7 @@ motion-magnetic {
 @media (prefers-reduced-motion: no-preference) {
 	.js motion-reveal:not(:defined),
 	.js motion-headline:not(:defined),
+	.js motion-typewriter:not(:defined),
 	.js motion-stagger:not(:defined) > * {
 		opacity: 0;
 	}
